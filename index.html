@@ -281,6 +281,56 @@
             }
         </style>
 
+        <style>
+            /* Professional Minimalist Animations */
+            .flow-line {
+                stroke-dasharray: 4 8;
+                animation: smoothFlow 2.5s linear infinite;
+            }
+            .flow-line-reverse {
+                stroke-dasharray: 4 8;
+                animation: smoothFlowReverse 2.5s linear infinite;
+            }
+            @keyframes smoothFlow {
+                to { stroke-dashoffset: -24; }
+            }
+            @keyframes smoothFlowReverse {
+                to { stroke-dashoffset: 24; }
+            }
+            
+            .ring-expand {
+                animation: ringExpand 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+            }
+            @keyframes ringExpand {
+                0% { transform: scale(0.9); opacity: 0.8; }
+                100% { transform: scale(1.5); opacity: 0; }
+            }
+
+            .fade-pulse {
+                animation: fadePulse 2s ease-in-out infinite alternate;
+            }
+            @keyframes fadePulse {
+                0% { opacity: 0.3; }
+                100% { opacity: 0.8; }
+            }
+
+            .ap-pulse {
+                animation: apPulse 1.5s ease-in-out infinite alternate;
+            }
+            @keyframes apPulse {
+                0% { fill: #A1A1AA; }
+                100% { fill: #111; }
+            }
+            
+            .no-scrollbar::-webkit-scrollbar {
+                display: none;
+            }
+            .no-scrollbar {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        </style>
+
         <main class="flex-grow pt-32 pb-24 px-6 max-w-[1400px] mx-auto w-full">
             
             <!-- Hero: Asymmetric & Minimalist -->
@@ -288,23 +338,28 @@
                 <div class="lg:col-span-7">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-medium tracking-wide text-zinc-600 mb-8 shadow-sm">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#111] fade-pulse"></span>
-                        Cisco Infrastructure Native
+                        Cisco C9300 & IOx Native
                     </div>
                     
-                    <h1 class="text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-[-0.03em] leading-[0.95] text-[#111] mb-8">
+                    <h1 class="text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-[-0.03em] leading-[0.95] text-[#111] mb-6">
                         The Edge <br/><span class="text-zinc-400">Intelligence</span> <br/>Grid.
                     </h1>
                     
+                    <!-- BASELINE -->
+                    <h2 class="text-2xl md:text-3xl font-medium tracking-tight text-zinc-500 mb-8 border-l-2 border-zinc-200 pl-4">
+                        <span class="text-[#111]">Div</span>ide the payload. <span class="text-[#111]">Aid</span> the edge.
+                    </h2>
+                    
                     <p class="text-xl text-zinc-500 max-w-xl font-light leading-relaxed mb-10">
-                        We transform Cisco Catalyst Switches and CW917X Access Points into a sovereign, decentralized AI execution farm. Leveraging asymmetric pipeline parallelism to bypass hardware constraints and execute high-density AI workloads with <strong class="font-medium text-zinc-900">zero dedicated GPUs</strong>.
+                        We transform Cisco Catalyst 9300 Series Switches and CW917X Access Points into a sovereign, decentralized AI execution farm via native Docker containers. Leveraging asymmetric pipeline parallelism to execute high-density AI workloads with <strong class="font-medium text-zinc-900">zero dedicated GPUs</strong>.
                     </p>
                     
                     <div class="flex items-center gap-4">
-                        <a href="#sovereignty" class="bg-[#111] text-white px-7 py-3.5 rounded-full font-medium hover:bg-[#222] transition shadow-lg shadow-black/5">
-                            See the Air-Gap Simulation
+                        <a href="#example" class="bg-[#111] text-white px-7 py-3.5 rounded-full font-medium hover:bg-[#222] transition shadow-lg shadow-black/5">
+                            See Task Splitting Workflow
                         </a>
-                        <a href="#architecture" class="bg-white text-[#111] border border-zinc-200 px-7 py-3.5 rounded-full font-medium hover:bg-zinc-50 transition">
-                            View Pipeline Flow
+                        <a href="#bento" class="bg-white text-[#111] border border-zinc-200 px-7 py-3.5 rounded-full font-medium hover:bg-zinc-50 transition">
+                            View Docker Architecture
                         </a>
                     </div>
                 </div>
@@ -319,12 +374,9 @@
                                     <stop offset="100%" stop-color="#111" stop-opacity="0" />
                                 </radialGradient>
                                 
-                                <!-- Cisco Catalyst Switch Def -->
                                 <g id="catalyst" transform="translate(-60, -15)">
                                     <rect width="120" height="30" rx="3" fill="#fff" stroke="#111" stroke-width="2"/>
-                                    <!-- Cisco Logo mark placeholder -->
                                     <rect x="8" y="8" width="14" height="14" rx="2" fill="#E4E4E7" />
-                                    <!-- Ports -->
                                     <g fill="#A1A1AA">
                                         <rect x="32" y="8" width="6" height="6" rx="1"/><rect x="40" y="8" width="6" height="6" rx="1"/><rect x="48" y="8" width="6" height="6" rx="1"/><rect x="56" y="8" width="6" height="6" rx="1"/>
                                         <rect x="64" y="8" width="6" height="6" rx="1"/><rect x="72" y="8" width="6" height="6" rx="1"/><rect x="80" y="8" width="6" height="6" rx="1"/><rect x="88" y="8" width="6" height="6" rx="1"/>
@@ -334,7 +386,6 @@
                                     <rect x="100" y="8" width="12" height="14" rx="1" fill="#E4E4E7" />
                                 </g>
 
-                                <!-- Cisco Access Point Def (CW917X style) -->
                                 <g id="ap" transform="translate(-16, -16)">
                                     <rect width="32" height="32" rx="8" fill="#fff" stroke="#A1A1AA" stroke-width="1.5" class="hover:stroke-[#111] transition-colors"/>
                                     <rect x="4" y="4" width="24" height="24" rx="5" fill="none" stroke="#E4E4E7" stroke-width="1"/>
@@ -342,18 +393,14 @@
                                 </g>
                             </defs>
 
-                            <!-- Background Glow -->
                             <circle cx="250" cy="340" r="150" fill="url(#node-glow)" />
                             
-                            <!-- Network Links (Static Background) -->
+                            <!-- Static Lines -->
                             <g stroke="#E4E4E7" stroke-width="1" fill="none">
-                                <!-- Layer 1 to Core -->
                                 <path d="M 250 340 L 170 240"/><path d="M 250 340 L 250 240"/><path d="M 250 340 L 330 240"/>
-                                <!-- Layer 2 to Layer 1 -->
                                 <path d="M 170 240 L 90 140"/><path d="M 170 240 L 170 140"/>
                                 <path d="M 250 240 L 170 140"/><path d="M 250 240 L 250 140"/><path d="M 250 240 L 330 140"/>
                                 <path d="M 330 240 L 330 140"/><path d="M 330 240 L 410 140"/>
-                                <!-- Layer 3 to Layer 2 -->
                                 <path d="M 90 140 L 50 40"/><path d="M 90 140 L 130 40"/>
                                 <path d="M 170 140 L 130 40"/><path d="M 170 140 L 210 40"/>
                                 <path d="M 250 140 L 210 40"/><path d="M 250 140 L 290 40"/>
@@ -370,23 +417,16 @@
                                 <path d="M 250 140 L 290 40" style="animation-delay: 0.9s"/><path d="M 410 140 L 450 40" style="animation-delay: 0.6s"/>
                             </g>
 
-                            <!-- AP Nodes Swarm -->
-                            <!-- Layer 3 (Top) -->
+                            <!-- Swarm Nodes -->
                             <use href="#ap" x="50" y="40" /><use href="#ap" x="130" y="40" /><use href="#ap" x="210" y="40" />
                             <use href="#ap" x="290" y="40" /><use href="#ap" x="370" y="40" /><use href="#ap" x="450" y="40" />
-                            
-                            <!-- Layer 2 -->
                             <use href="#ap" x="90" y="140" /><use href="#ap" x="170" y="140" /><use href="#ap" x="250" y="140" />
                             <use href="#ap" x="330" y="140" /><use href="#ap" x="410" y="140" />
-                            
-                            <!-- Layer 1 -->
                             <use href="#ap" x="170" y="240" /><use href="#ap" x="250" y="240" /><use href="#ap" x="330" y="240" />
 
-                            <!-- Core Node (Catalyst Switch) -->
                             <rect x="190" y="325" width="120" height="30" rx="4" fill="none" stroke="#E4E4E7" stroke-width="1" class="ring-expand" style="transform-origin: 250px 340px;" />
                             <use href="#catalyst" x="250" y="340" />
-                            <text x="250" y="375" fill="#111" font-size="10" font-family="sans-serif" font-weight="600" letter-spacing="1" text-anchor="middle">CATALYST ORCHESTRATOR</text>
-                            
+                            <text x="250" y="375" fill="#111" font-size="10" font-family="sans-serif" font-weight="600" letter-spacing="1" text-anchor="middle">C9300 ORCHESTRATOR</text>
                         </svg>
                     </div>
                 </div>
@@ -403,8 +443,7 @@
                 <div class="w-full bg-transparent flex justify-center relative overflow-visible">
                     <div class="w-full max-w-5xl aspect-[2/1] relative">
                         <svg viewBox="0 0 800 400" class="w-full h-full overflow-visible">
-                            
-                            <!-- External Cloud (Disconnected) -->
+                            <!-- External Cloud -->
                             <rect x="50" y="10" width="700" height="50" rx="25" fill="#fff" stroke="#E4E4E7" stroke-width="1" stroke-dasharray="4 4" />
                             <text x="400" y="38" fill="#A1A1AA" font-size="10" font-family="sans-serif" font-weight="500" letter-spacing="2" text-anchor="middle">PUBLIC INTERNET / EXTERNAL API</text>
 
@@ -412,56 +451,44 @@
                             <rect x="50" y="100" width="700" height="280" rx="24" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1" />
                             <text x="400" y="125" fill="#A1A1AA" font-size="10" font-family="sans-serif" font-weight="500" letter-spacing="2" text-anchor="middle">AIR-GAPPED LOCAL VLAN</text>
 
-                            <!-- Failed Connection Line (Fading out) -->
+                            <!-- Failed Connection Line -->
                             <path d="M 400 100 L 400 60" stroke="#E4E4E7" stroke-width="1" />
                             <path d="M 400 100 L 400 60" stroke="#71717A" stroke-width="1.5" class="flow-line" opacity="0.1" />
                             
-                            <!-- Internal Swarm -->
-                            
                             <!-- Core Catalyst Switch -->
                             <use href="#catalyst" x="400" y="330" />
-                            <text x="400" y="365" fill="#111" font-size="9" font-family="sans-serif" font-weight="600" letter-spacing="1" text-anchor="middle">BRANCH CORE SWITCH</text>
+                            <text x="400" y="365" fill="#111" font-size="9" font-family="sans-serif" font-weight="600" letter-spacing="1" text-anchor="middle">C9300 ORCHESTRATOR</text>
 
                             <!-- Swarm Clusters -->
-                            <!-- Vault Zone (Left) -->
                             <text x="200" y="150" fill="#71717A" font-size="10" font-family="sans-serif" font-weight="500" text-anchor="middle">VAULT SWARM</text>
                             <use href="#ap" x="160" y="180" /><use href="#ap" x="240" y="180" />
                             <use href="#ap" x="120" y="240" /><use href="#ap" x="200" y="240" /><use href="#ap" x="280" y="240" />
 
-                            <!-- Teller Zone (Center) -->
                             <text x="400" y="170" fill="#71717A" font-size="10" font-family="sans-serif" font-weight="500" text-anchor="middle">TELLER SWARM</text>
                             <use href="#ap" x="360" y="200" /><use href="#ap" x="440" y="200" />
                             <use href="#ap" x="400" y="260" />
 
-                            <!-- Lobby Zone (Right) -->
                             <text x="600" y="150" fill="#71717A" font-size="10" font-family="sans-serif" font-weight="500" text-anchor="middle">LOBBY SWARM</text>
                             <use href="#ap" x="560" y="180" /><use href="#ap" x="640" y="180" />
                             <use href="#ap" x="520" y="240" /><use href="#ap" x="600" y="240" /><use href="#ap" x="680" y="240" />
 
-                            <!-- Internal Static Lines (Distribution) -->
+                            <!-- Static Lines -->
                             <g stroke="#E4E4E7" stroke-width="1" fill="none">
                                 <path d="M 400 315 L 400 290 L 200 290 L 200 240"/>
                                 <path d="M 400 315 L 400 260"/>
                                 <path d="M 400 315 L 400 290 L 600 290 L 600 240"/>
-                                
-                                <!-- Vault inner links -->
                                 <path d="M 200 240 L 160 180"/><path d="M 200 240 L 240 180"/>
                                 <path d="M 200 240 L 120 240"/><path d="M 200 240 L 280 240"/>
-                                
-                                <!-- Teller inner links -->
                                 <path d="M 400 260 L 360 200"/><path d="M 400 260 L 440 200"/>
-
-                                <!-- Lobby inner links -->
                                 <path d="M 600 240 L 560 180"/><path d="M 600 240 L 640 180"/>
                                 <path d="M 600 240 L 520 240"/><path d="M 600 240 L 680 240"/>
                             </g>
 
-                            <!-- Internal Animated Flow -->
+                            <!-- Animated Lines -->
                             <g stroke="#71717A" stroke-width="1.5" class="flow-line" fill="none">
                                 <path d="M 400 315 L 400 290 L 200 290 L 200 240"/>
                                 <path d="M 400 315 L 400 260" style="animation-delay: 0.5s"/>
                                 <path d="M 400 315 L 400 290 L 600 290 L 600 240" style="animation-delay: 1.0s"/>
-                                
                                 <path d="M 200 240 L 160 180" style="animation-delay: 0.2s"/><path d="M 200 240 L 280 240" style="animation-delay: 0.7s"/>
                                 <path d="M 400 260 L 440 200" style="animation-delay: 0.4s"/>
                                 <path d="M 600 240 L 560 180" style="animation-delay: 0.8s"/><path d="M 600 240 L 680 240" style="animation-delay: 0.3s"/>
@@ -475,116 +502,120 @@
                 </div>
             </div>
 
-            <!-- Bento Grid Section: The IOx Magic -->
-            <div id="bento" class="mt-40 scroll-mt-32">
+            <!-- Bento Grid Section: Cisco IOx & Docker -->
+            <div id="bento" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
                 <div class="mb-12 max-w-3xl">
-                    <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Beating the IOx memory bottleneck.</h2>
-                    <p class="text-xl text-zinc-500 font-light leading-relaxed">Cisco edge infrastructure possesses robust ARM64 compute capacity. However, Cisco Application Hosting (IOx) restricts active processes via strict <code>cgroups</code>, limiting available RAM to an incredibly tight footprint. Running high-density architectures natively in this sandbox was deemed impossible. Until now.</p>
+                    <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Cisco IOx & Native Docker Execution</h2>
+                    <p class="text-xl text-zinc-500 font-light leading-relaxed">Catalyst 9300 series and modern edge APs possess robust ARM64 compute capacity. Cisco IOx allows native <strong>Docker</strong> containers to run directly on the switch hardware, but restricts memory footprints via strict <code>cgroups</code>. Running colossal AI architectures natively in this sandbox was deemed impossible. Until now.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
                     
-                    <!-- Bento 1: Quantization -->
                     <div class="md:col-span-4 bg-white border border-zinc-200 rounded-[32px] p-10 flex flex-col justify-between hover:shadow-xl transition-shadow duration-500">
                         <div>
                             <div class="text-zinc-400 font-medium text-xs tracking-wide uppercase mb-4">01. Deep Quantization</div>
                             <h3 class="text-2xl font-medium tracking-tight mb-3 text-[#111]">GGUF Encoding</h3>
-                            <p class="text-zinc-500 font-light leading-relaxed text-sm">We subject state-of-the-art dense transformer architectures to aggressive INT4 quantization. By dropping precision on the multi-dimensional weight matrices, the overall model payload is algorithmically compressed by nearly 65%, with mathematically negligible perplexity degradation.</p>
+                            <p class="text-zinc-500 font-light leading-relaxed text-sm">We subject state-of-the-art dense transformer models to aggressive INT4 quantization. By dropping precision on the weight matrices, the payload is algorithmically compressed, fitting inside the Docker image without perplexity degradation.</p>
                         </div>
                     </div>
 
-                    <!-- Bento 2: Layer Slicing -->
                     <div class="md:col-span-8 bg-white border border-zinc-200 rounded-[32px] p-10 flex flex-col justify-between relative overflow-hidden hover:shadow-xl transition-shadow duration-500">
                         <div class="relative z-10 max-w-xl">
-                            <div class="text-zinc-400 font-medium text-xs tracking-wide uppercase mb-4">02. Asymmetric Sharding</div>
-                            <h3 class="text-2xl font-medium tracking-tight mb-3 text-[#111]">Pipeline Parallelism</h3>
-                            <p class="text-zinc-500 font-light leading-relaxed mb-8 text-sm">Even aggressively quantized, the model remains too large for a single IOx container. Our orchestrator dissects the network structurally. Rather than passing parameter weights, we shard the underlying <em>Transformer Block Layers</em> themselves. Each AP node loads only a precise, highly-specific slice of the calculation graph.</p>
+                            <div class="text-zinc-400 font-medium text-xs tracking-wide uppercase mb-4">02. Workload Fragmentation</div>
+                            <h3 class="text-2xl font-medium tracking-tight mb-3 text-[#111]">The DivGraph™ Algorithm</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed mb-8 text-sm">Our proprietary <strong>DivGraph Distribution Algorithm</strong> resides in the C9300 Orchestrator container. When a heavy AI task hits the network, DivGraph shatters the underlying neural network layers into mini-tasks. Rather than passing parameter weights, it distributes fractional matrix multiplication tasks across the Docker nodes running on your AP swarm.</p>
                             
                             <div class="flex flex-wrap gap-4">
                                 <div class="px-5 py-3 bg-zinc-50 rounded-2xl border border-zinc-100 flex flex-col">
-                                    <span class="text-xs text-zinc-400 mb-1">Container Payload</span>
-                                    <span class="text-sm font-medium text-zinc-900">Sub-block matrix subset</span>
+                                    <span class="text-xs text-zinc-400 mb-1">Docker Payload</span>
+                                    <span class="text-sm font-medium text-zinc-900">1x Sub-block Micro-tensor</span>
                                 </div>
                                 <div class="px-5 py-3 bg-zinc-50 rounded-2xl border border-zinc-100 flex flex-col">
-                                    <span class="text-xs text-zinc-400 mb-1">Memory per Node</span>
-                                    <span class="text-sm font-medium text-zinc-900">&lt; cgroup threshold</span>
+                                    <span class="text-xs text-zinc-400 mb-1">Node Validation</span>
+                                    <span class="text-sm font-medium text-zinc-900">C9300 State Merge</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Bento 3: Terminal Simulation (Sleek) -->
                     <div class="md:col-span-8 bg-[#111] border border-zinc-800 rounded-[32px] p-10 flex flex-col justify-between font-mono text-sm relative group overflow-hidden">
                         <div class="flex items-center gap-2 mb-6 pb-4 border-b border-zinc-800">
                             <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
                             <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
                             <div class="w-2.5 h-2.5 rounded-full bg-zinc-700"></div>
-                            <span class="ml-4 text-zinc-500 text-xs">orchestrator-core:~</span>
+                            <span class="ml-4 text-zinc-500 text-xs">C9300-Orchestrator-Docker:~</span>
                         </div>
                         <div class="space-y-3 text-zinc-400 flex-grow overflow-y-auto no-scrollbar text-xs">
-                            <p class="text-zinc-200">$ divaid-cli start --arch Transformer --quant INT4</p>
-                            <p>[INFO] Initiating gRPC Swarm Orchestrator process...</p>
-                            <p>[INFO] Discovering accessible IOx instances via LLDP / VLAN...</p>
-                            <p class="text-zinc-300">[OK] Discovered high-density network edge: AP Cluster active.</p>
-                            <p>[INFO] Generating asymmetrical tensor graph sharding...</p>
-                            <p class="text-zinc-500">[OK] Subgraph block injected into IOx container 10.0.0.11</p>
-                            <p class="text-zinc-500">[OK] Subgraph block injected into IOx container 10.0.0.12</p>
-                            <p class="text-zinc-600">... [Sequential network fabric allocation] ...</p>
-                            <p class="text-zinc-500">[OK] Final LM-head mapped to Orchestrator Core.</p>
-                            <p class="text-zinc-100 mt-4">> Pipeline established. Listening for inference requests.</p>
+                            <p class="text-zinc-200">$ divgraphctl start-swarm --quant INT4</p>
+                            <p>[INFO] Discovering accessible Docker instances via Cisco IOx API...</p>
+                            <p class="text-zinc-300">[OK] Discovered 48 Access Points running Divaid-Worker images.</p>
+                            <p>[INFO] DivGraph Algorithm generating asymmetric tensor shards...</p>
+                            <p class="text-zinc-500">[OK] Micro-task block pushed to AP-Vault-01 (10.0.0.11)</p>
+                            <p class="text-zinc-500">[OK] Micro-task block pushed to AP-Teller-02 (10.0.0.12)</p>
+                            <p class="text-zinc-600">... [Distributing 48 shards across the mesh] ...</p>
+                            <p class="text-zinc-500">[OK] Verification hash-tree mapped to C9300 Orchestrator.</p>
+                            <p class="text-zinc-100 mt-4">> Pipeline established. Listening for massive AI inferences.</p>
                         </div>
                     </div>
 
-                    <!-- Bento 4: Outcome -->
                     <div class="md:col-span-4 bg-zinc-50 border border-zinc-200 rounded-[32px] p-10 flex flex-col justify-between hover:shadow-xl transition-shadow duration-500">
                         <div>
-                            <div class="text-zinc-400 font-medium text-xs tracking-wide uppercase mb-4">03. Edge Execution</div>
-                            <h3 class="text-2xl font-medium tracking-tight mb-3 text-[#111]">Success</h3>
-                            <p class="text-zinc-500 font-light leading-relaxed text-sm">The sharded footprint comfortably sidesteps the aggressive OOM-killer logic of the host OS. The container initializes instantly, mapping weights into ARM RAM without relying on swap, turning the AP into a permanent Layer Executor for the swarm.</p>
+                            <div class="text-zinc-400 font-medium text-xs tracking-wide uppercase mb-4">03. Verification & Recomposition</div>
+                            <h3 class="text-2xl font-medium tracking-tight mb-3 text-[#111]">C9300 Merge</h3>
+                            <p class="text-zinc-500 font-light leading-relaxed text-sm">Once the AP nodes complete their fraction of the intelligence calculation, the tensors return to the C9300. The Orchestrator acts as the ultimate verifier, recombining the mini-tasks, decoding the hidden states, and returning the definitive final AI output with mathematical certainty.</p>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Asymmetric Paradigm Section -->
-            <div id="paradigm" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
+            <!-- Heavy Example Section -->
+            <div id="example" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
-                        <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">A Blockchain-inspired Execution Paradigm.</h2>
+                        <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Real-World Flow: Heavy Workload Orchestration.</h2>
                         <div class="space-y-6 text-xl text-zinc-500 font-light leading-relaxed">
-                            <p>The standard industry approach forces monolithic GPU clusters to handle generation linearly. By treating inference as a series of distributed discrete matrix multiplications, we pivot to a fundamentally different paradigm.</p>
-                            <p>Imagine a cryptographic blockchain: the network avoids centralized computing bottlenecks by forcing millions of disparate nodes to process tiny, fractional hashing tasks that ultimately link together to form a validated chain.</p>
-                            <p>Divaid applies this exact topology to Edge AI. The Cisco access point network acts as the miner pool. A token's hidden-state tensor is serialized and passed across the mGig backplane from node to node, resolving attention layers sequentially without ever leaving your sovereign air-gapped VLAN.</p>
+                            <p>Imagine processing a massive, confidential <strong>500-page Financial Audit</strong> through an advanced LLM to detect compliance anomalies. Sending this to an external API violates banking sovereignty.</p>
+                            <p>Instead, the prompt hits the <span class="text-zinc-900 font-medium">Catalyst 9300 Orchestrator</span>. The <strong>DivGraph Algorithm</strong> tokenizes the document and shatters the heavy attention-matrix calculation into 50 mini-tasks.</p>
+                            <p>These micro-payloads are pushed instantly to 50 local CW917X Access Points running lightweight Docker workers. They execute their fraction of the neural network layer simultaneously. The returning tensors are instantly verified and recomposed by the C9300, delivering a comprehensive anomaly report locally, securely, and in seconds.</p>
                         </div>
                     </div>
                     
                     <div class="bg-white border border-zinc-200 rounded-[32px] p-10 shadow-sm relative overflow-hidden">
-                        <div class="text-xs text-zinc-400 font-medium tracking-wide uppercase border-b border-zinc-100 pb-4 mb-6">Inference Transport Topology</div>
+                        <div class="text-xs text-zinc-400 font-medium tracking-wide uppercase border-b border-zinc-100 pb-4 mb-8">DivGraph Task Fragmentation Flow</div>
                         
-                        <div class="space-y-6">
-                            <div class="flex items-center justify-between">
-                                <span class="text-zinc-500 text-sm">1. Orchestrator</span>
-                                <span class="text-xs border border-zinc-200 text-zinc-600 px-3 py-1.5 rounded-full">Tokenization & Embeddings</span>
+                        <div class="relative pl-8 border-l border-zinc-200 space-y-8">
+                            
+                            <div class="relative">
+                                <div class="absolute -left-10 w-4 h-4 rounded-full bg-[#111] border-4 border-white"></div>
+                                <h4 class="text-sm font-medium text-[#111] mb-1">1. Heavy Ingestion</h4>
+                                <p class="text-xs text-zinc-500">C9300 receives the 500-page Audit (PDF).</p>
                             </div>
-                            <div class="h-px w-full bg-gradient-to-r from-zinc-200 to-transparent"></div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-zinc-500 text-sm">2. Node Cluster Alpha</span>
-                                <span class="text-xs border border-zinc-200 text-zinc-600 px-3 py-1.5 rounded-full">Attention + FFN Computation</span>
+                            
+                            <div class="relative">
+                                <div class="absolute -left-10 w-4 h-4 rounded-full bg-zinc-300 border-4 border-white"></div>
+                                <h4 class="text-sm font-medium text-[#111] mb-1">2. DivGraph Matrix Split</h4>
+                                <p class="text-xs text-zinc-500">Algorithm divides the mathematical workload into 50 micro-tensor sequences.</p>
                             </div>
-                            <div class="flex items-center justify-between pl-4">
-                                <svg class="w-4 h-4 text-zinc-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                                <span class="text-[10px] text-zinc-400 uppercase tracking-widest">gRPC Serialization Payload (~4KB)</span>
+                            
+                            <div class="relative">
+                                <div class="absolute -left-10 w-4 h-4 rounded-full bg-zinc-300 border-4 border-white"></div>
+                                <h4 class="text-sm font-medium text-[#111] mb-1">3. Docker Swarm Distribution</h4>
+                                <p class="text-xs text-zinc-500">Micro-tasks distributed via IOx to 50 AP nodes. Mini-inferences executed in parallel.</p>
                             </div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-zinc-500 text-sm">3. Node Cluster Beta</span>
-                                <span class="text-xs border border-zinc-200 text-zinc-600 px-3 py-1.5 rounded-full">Sequential FFN Execution</span>
+                            
+                            <div class="relative">
+                                <div class="absolute -left-10 w-4 h-4 rounded-full bg-zinc-300 border-4 border-white"></div>
+                                <h4 class="text-sm font-medium text-[#111] mb-1">4. C9300 Verification & Recomposition</h4>
+                                <p class="text-xs text-zinc-500">Orchestrator receives returning tensors, verifies hash integrity, and merges outputs.</p>
                             </div>
-                            <div class="text-zinc-300 text-center text-sm py-2">...</div>
-                            <div class="flex items-center justify-between">
-                                <span class="text-[#111] text-sm font-medium">N. Resolution</span>
-                                <span class="text-xs bg-[#111] text-white px-3 py-1.5 rounded-full font-medium">LM Head Decode & Yield</span>
+                            
+                            <div class="relative">
+                                <div class="absolute -left-10 w-4 h-4 rounded-full bg-[#111] border-4 border-white"></div>
+                                <h4 class="text-sm font-medium text-[#111] mb-1">5. Final Output Yield</h4>
+                                <p class="text-xs text-zinc-500">Local Zero-Trust compliance report generated.</p>
                             </div>
+
                         </div>
                     </div>
                 </div>
