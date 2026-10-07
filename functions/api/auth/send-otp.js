@@ -51,7 +51,7 @@ export async function onRequestPost({ request, env }) {
       console.log(`[LOCAL DEV] OTP for ${email}: ${code}`);
     }
 
-    return new Response(JSON.stringify({ success: true, signature }), { status: 200 });
+    return new Response(JSON.stringify({ success: true, signature, brevo_called: !!env.BREVO_API_KEY }), { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
   }
