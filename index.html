@@ -291,7 +291,7 @@
                 const msgEl = document.getElementById('auth-msg');
                 if (!msgEl) return;
                 msgEl.textContent = text;
-                msgEl.className = \`text-sm mt-4 \${isError ? 'text-rose-500' : 'text-emerald-500'}\`;
+                msgEl.className = `text-sm mt-4 ${isError ? 'text-rose-500' : 'text-emerald-500'}`;
                 msgEl.classList.remove('hidden');
             }
 
