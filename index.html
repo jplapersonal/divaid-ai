@@ -279,94 +279,95 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const token = localStorage.getItem('divaid_token');
-            if (token) {
-                unlock();
+            if (localStorage.getItem('divaid_token')) {
+                document.getElementById('auth-wall').classList.add('hidden');
+                document.getElementById('protected-content').classList.remove('hidden');
+                document.getElementById('protected-content').classList.add('flex');
             }
-
-            const formLogin = document.getElementById('form-login');
-            const formOtp = document.getElementById('form-otp');
-            const emailInput = document.getElementById('email-input');
-            const codeInput = document.getElementById('login-otp');
-            const btnSend = document.getElementById('btn-send-otp');
-            const btnVerify = document.getElementById('btn-verify-otp');
-            const msg = document.getElementById('auth-msg');
 
             let currentSignature = '';
 
             function showMsg(text, isError = true) {
-                msg.textContent = text;
-                msg.className = \`text-sm mt-4 \${isError ? 'text-rose-500' : 'text-emerald-500'}\`;
-                msg.classList.remove('hidden');
+                const msgEl = document.getElementById('auth-msg');
+                if (!msgEl) return;
+                msgEl.textContent = text;
+                msgEl.className = \`text-sm mt-4 \${isError ? 'text-rose-500' : 'text-emerald-500'}\`;
+                msgEl.classList.remove('hidden');
             }
 
-            function unlock() {
-                document.getElementById('auth-wall').classList.add('opacity-0', 'pointer-events-none');
-                setTimeout(() => {
-                    document.getElementById('auth-wall').classList.add('hidden');
-                    document.getElementById('protected-content').classList.remove('hidden');
-                    document.getElementById('protected-content').classList.add('flex');
-                }, 500);
-            }
-
-            formLogin.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                btnSend.disabled = true;
-                btnSend.textContent = 'Sending...';
-                msg.classList.add('hidden');
-
-                try {
-                    const res = await fetch('/api/auth/send-otp', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: emailInput.value })
-                    });
-                    const data = await res.json();
+            const formLogin = document.getElementById('form-login');
+            if (formLogin) {
+                formLogin.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email-input').value;
+                    const btn = document.getElementById('btn-send-otp');
                     
-                    if (!res.ok) throw new Error(data.error || 'Failed to send code');
-                    
-                    if (data.signature) {
-                        currentSignature = data.signature;
+                    if (!email) {
+                        showMsg('Please enter your email.');
+                        return;
                     }
                     
-                    formLogin.classList.add('hidden');
-                    formOtp.classList.remove('hidden');
-                    showMsg('Access code sent to your email.', false);
-                } catch (err) {
-                    showMsg(err.message);
-                    btnSend.disabled = false;
-                    btnSend.textContent = 'Get Access Code';
-                }
-            });
+                    btn.disabled = true;
+                    btn.textContent = 'Sending...';
+                    document.getElementById('auth-msg').classList.add('hidden');
 
-            formOtp.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                btnVerify.disabled = true;
-                btnVerify.textContent = 'Verifying...';
-                msg.classList.add('hidden');
+                    try {
+                        const res = await fetch('/api/auth/send-otp', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email })
+                        });
+                        
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Failed to send code');
+                        if (data.signature) currentSignature = data.signature;
+                        
+                        document.getElementById('form-login').classList.add('hidden');
+                        document.getElementById('form-otp').classList.remove('hidden');
+                        showMsg('Access code sent to your email.', false);
+                    } catch (err) {
+                        showMsg(err.message);
+                        btn.disabled = false;
+                        btn.textContent = 'Get Access Code';
+                    }
+                });
+            }
 
-                try {
-                    const res = await fetch('/api/auth/verify-otp', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ 
-                            email: emailInput.value, 
-                            code: codeInput.value, 
-                            signature: currentSignature 
-                        })
-                    });
-                    const data = await res.json();
+            const formOtp = document.getElementById('form-otp');
+            if (formOtp) {
+                formOtp.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('email-input').value;
+                    const code = document.getElementById('login-otp').value;
+                    const btn = document.getElementById('btn-verify-otp');
                     
-                    if (!res.ok) throw new Error(data.error || 'Invalid code');
-                    
-                    localStorage.setItem('divaid_token', data.token);
-                    unlock();
-                } catch (err) {
-                    showMsg(err.message);
-                    btnVerify.disabled = false;
-                    btnVerify.textContent = 'Verify';
-                }
-            });
+                    btn.disabled = true;
+                    btn.textContent = 'Verifying...';
+                    document.getElementById('auth-msg').classList.add('hidden');
+
+                    try {
+                        const res = await fetch('/api/auth/verify-otp', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ email, code, signature: currentSignature })
+                        });
+                        const data = await res.json();
+                        if (!res.ok) throw new Error(data.error || 'Invalid code');
+                        
+                        localStorage.setItem('divaid_token', data.token);
+                        document.getElementById('auth-wall').classList.add('opacity-0', 'pointer-events-none');
+                        setTimeout(() => {
+                            document.getElementById('auth-wall').classList.add('hidden');
+                            document.getElementById('protected-content').classList.remove('hidden');
+                            document.getElementById('protected-content').classList.add('flex');
+                        }, 500);
+                    } catch (err) {
+                        showMsg(err.message);
+                        btn.disabled = false;
+                        btn.textContent = 'Verify';
+                    }
+                });
+            }
         });
     </script>
 </body>
