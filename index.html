@@ -444,6 +444,84 @@
                 </div>
             </div>
 
+            <!-- Absolute Data Sovereignty Simulation -->
+            <div id="sovereignty" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
+                <div class="mb-16 max-w-3xl">
+                    <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Absolute Data Sovereignty.</h2>
+                    <p class="text-xl text-zinc-500 font-light leading-relaxed">Consider a financial institution processing highly sensitive PII. Cloud-based LLMs leak context via external APIs. Divaid keeps the prompt entirely localized. <strong>The inference swarm is physically sandboxed within the walls of the branch.</strong></p>
+                </div>
+
+                <!-- Sleek Minimalist Graphic with Cisco Swarm -->
+                <div class="w-full bg-transparent flex justify-center relative overflow-visible">
+                    <div class="w-full max-w-5xl aspect-[2/1] relative">
+                        <svg viewBox="0 0 800 400" class="w-full h-full overflow-visible">
+                            <!-- External Cloud -->
+                            <rect x="50" y="10" width="700" height="50" rx="25" fill="#fff" stroke="#E4E4E7" stroke-width="1" stroke-dasharray="4 4" />
+                            <text x="400" y="38" fill="#A1A1AA" font-size="10" font-family="sans-serif" font-weight="500" letter-spacing="2" text-anchor="middle">PUBLIC INTERNET / EXTERNAL API</text>
+
+                            <!-- Sovereignty Boundary -->
+                            <rect x="50" y="100" width="700" height="280" rx="24" fill="#FAFAFA" stroke="#E4E4E7" stroke-width="1" />
+                            <text x="400" y="125" fill="#A1A1AA" font-size="10" font-family="sans-serif" font-weight="500" letter-spacing="2" text-anchor="middle">AIR-GAPPED LOCAL VLAN</text>
+
+                            <!-- Failed Connection Line -->
+                            <path d="M 400 100 L 400 60" stroke="#E4E4E7" stroke-width="1" />
+                            <path d="M 400 100 L 400 60" stroke="#71717A" stroke-width="1.5" class="flow-line" opacity="0.1" />
+                            
+                            <!-- Core Catalyst Switch -->
+                            <use href="#catalyst" x="400" y="330" />
+                            <text x="400" y="365" fill="#111" font-size="9" font-family="sans-serif" font-weight="600" letter-spacing="1" text-anchor="middle">C9300 ORCHESTRATOR</text>
+
+                            <!-- Swarm Clusters -->
+                            <text x="200" y="150" fill="#71717A" font-size="10" font-family="sans-serif" font-weight="500" text-anchor="middle">VAULT SWARM</text>
+                            <use href="#ap" x="160" y="180" /><use href="#ap" x="240" y="180" />
+                            <use href="#ap" x="120" y="240" /><use href="#ap" x="200" y="240" /><use href="#ap" x="280" y="240" />
+
+                            <text x="400" y="170" fill="#71717A" font-size="10" font-family="sans-serif" font-weight="500" text-anchor="middle">TELLER SWARM</text>
+                            <use href="#ap" x="360" y="200" /><use href="#ap" x="440" y="200" />
+                            <use href="#ap" x="400" y="260" />
+
+                            <text x="600" y="150" fill="#71717A" font-size="10" font-family="sans-serif" font-weight="500" text-anchor="middle">LOBBY SWARM</text>
+                            <use href="#ap" x="560" y="180" /><use href="#ap" x="640" y="180" />
+                            <use href="#ap" x="520" y="240" /><use href="#ap" x="600" y="240" /><use href="#ap" x="680" y="240" />
+
+                            <!-- Static Lines -->
+                            <g stroke="#E4E4E7" stroke-width="1" fill="none">
+                                <path d="M 400 315 L 400 290 L 200 290 L 200 240"/>
+                                <path d="M 400 315 L 400 260"/>
+                                <path d="M 400 315 L 400 290 L 600 290 L 600 240"/>
+                                <path d="M 200 240 L 160 180"/><path d="M 200 240 L 240 180"/>
+                                <path d="M 200 240 L 120 240"/><path d="M 200 240 L 280 240"/>
+                                <path d="M 400 260 L 360 200"/><path d="M 400 260 L 440 200"/>
+                                <path d="M 600 240 L 560 180"/><path d="M 600 240 L 640 180"/>
+                                <path d="M 600 240 L 520 240"/><path d="M 600 240 L 680 240"/>
+                            </g>
+
+                            <!-- Animated Lines -->
+                            <g stroke="#71717A" stroke-width="1.5" class="flow-line" fill="none">
+                                <path d="M 400 315 L 400 290 L 200 290 L 200 240"/>
+                                <path d="M 400 315 L 400 260" style="animation-delay: 0.5s"/>
+                                <path d="M 400 315 L 400 290 L 600 290 L 600 240" style="animation-delay: 1.0s"/>
+                                <path d="M 200 240 L 160 180" style="animation-delay: 0.2s"/><path d="M 200 240 L 280 240" style="animation-delay: 0.7s"/>
+                                <path d="M 400 260 L 440 200" style="animation-delay: 0.4s"/>
+                                <path d="M 600 240 L 560 180" style="animation-delay: 0.8s"/><path d="M 600 240 L 680 240" style="animation-delay: 0.3s"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-zinc-500 font-light text-base leading-relaxed max-w-3xl">
+                    Every tensor travels purely through the physical copper and fiber inside the building. The Firewall strictly isolates external traffic, distributing the AI computation across dozens of Access Points acting as a massive local execution substrate.
+                </div>
+            </div>
+
+            <!-- Bento Grid Section: Cisco IOx & Docker -->
+            <div id="bento" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
+                <div class="mb-12 max-w-3xl">
+                    <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Cisco IOx & Native Docker Execution</h2>
+                    <p class="text-xl text-zinc-500 font-light leading-relaxed">Catalyst 9300 series and modern edge APs possess robust ARM64 compute capacity. Cisco IOx allows native <strong>Docker</strong> containers to run directly on the switch hardware, but restricts memory footprints via strict <code>cgroups</code>. Running colossal AI architectures natively in this sandbox was deemed impossible. Until now.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
             <!-- Bento Grid Section: Cisco IOx & Docker -->
             <div id="bento" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
                 <div class="mb-12 max-w-3xl">
