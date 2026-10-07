@@ -163,7 +163,7 @@
                 <div class="lg:col-span-7">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-gray-200 text-xs font-semibold tracking-wide text-gray-500 mb-8 shadow-sm">
                         <span class="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></span>
-                        Cisco Architecture Proof of Concept
+                        Cisco Infrastructure Native
                     </div>
                     
                     <h1 class="text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-[-0.03em] leading-[0.95] text-[#111] mb-8">
@@ -171,15 +171,15 @@
                     </h1>
                     
                     <p class="text-xl text-gray-500 max-w-xl font-light leading-relaxed mb-10">
-                        We transform Cisco Catalyst Switches and CW917X Access Points into a decentralized AI execution farm via Pipeline Parallelism. <strong class="font-medium text-gray-900">Zero dedicated GPUs. Total air-gapped sovereignty.</strong>
+                        We transform Cisco Catalyst Switches and CW917X Access Points into a sovereign, decentralized AI execution farm. Leveraging asymmetric pipeline parallelism to bypass hardware constraints and execute high-density AI workloads with <strong class="font-medium text-gray-900">zero dedicated GPUs</strong>.
                     </p>
                     
                     <div class="flex items-center gap-4">
                         <a href="#bento" class="bg-[#111] text-white px-7 py-3.5 rounded-full font-medium hover:bg-[#222] transition shadow-lg shadow-black/10">
-                            See the IOx Magic
+                            Explore Edge Architecture
                         </a>
                         <a href="#architecture" class="bg-white text-[#111] border border-gray-200 px-7 py-3.5 rounded-full font-medium hover:bg-gray-50 transition">
-                            View Architecture
+                            View Pipeline Flow
                         </a>
                     </div>
                 </div>
@@ -209,16 +209,16 @@
                             
                             <!-- AP Nodes -->
                             <rect x="90" y="60" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="120" y="79" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L0</text>
+                            <text x="120" y="79" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[n]</text>
                             
                             <rect x="250" y="60" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="280" y="79" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L1</text>
+                            <text x="280" y="79" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[n+1]</text>
                             
                             <rect x="90" y="310" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="120" y="329" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L14</text>
+                            <text x="120" y="329" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[n+k]</text>
                             
                             <rect x="250" y="310" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="280" y="329" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L15</text>
+                            <text x="280" y="329" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[last]</text>
                         </svg>
                     </div>
                 </div>
@@ -227,8 +227,8 @@
             <!-- Bento Grid Section: The IOx Magic -->
             <div id="bento" class="mt-40 scroll-mt-32">
                 <div class="mb-12 max-w-2xl">
-                    <h2 class="text-4xl font-medium tracking-tight text-[#111] mb-4">Beating the 100MB IOx limit.</h2>
-                    <p class="text-xl text-gray-500 font-light">Cisco CW917X APs have powerful ARM64 CPUs, but `cgroups` restrict memory to roughly 100MB. A 1B parameter model needs 2.2GB. Here is the math behind the magic.</p>
+                    <h2 class="text-4xl font-medium tracking-tight text-[#111] mb-4">Beating the IOx memory bottleneck.</h2>
+                    <p class="text-xl text-gray-500 font-light leading-relaxed">Cisco edge infrastructure, such as the CW917X Access Points, possesses robust ARM64 compute capacity. However, Cisco Application Hosting (IOx) restricts active processes via strict <code>cgroups</code>, limiting available RAM to an incredibly tight footprint. Running high-density transformer models natively in this sandbox was deemed impossible. Until now.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[minmax(280px,auto)]">
@@ -237,31 +237,31 @@
                     <div class="md:col-span-4 bento-card bento-dark p-10 flex flex-col justify-between relative overflow-hidden group">
                         <div class="absolute -right-10 -top-10 w-40 h-40 bg-blue-500/20 blur-3xl rounded-full group-hover:bg-blue-500/30 transition-all duration-700"></div>
                         <div>
-                            <div class="text-blue-400 font-mono text-sm mb-4">01. Quantization</div>
-                            <h3 class="text-3xl font-medium tracking-tight mb-3">INT4 GGUF</h3>
-                            <p class="text-gray-400 font-light leading-relaxed">We compress Llama-3.2-1B weights to 4 bits (Q4_K_M). Total model footprint plummets from 2.2GB to <span class="text-white font-medium">~800MB</span> with near-zero perplexity loss.</p>
+                            <div class="text-blue-400 font-mono text-sm mb-4">01. Deep Quantization</div>
+                            <h3 class="text-3xl font-medium tracking-tight mb-3">GGUF Encoding</h3>
+                            <p class="text-gray-400 font-light leading-relaxed text-sm">We subject state-of-the-art dense transformer architectures to aggressive INT4 quantization. By dropping precision on the multi-dimensional weight matrices from FP16 to a tightly packed GGUF format, the overall model payload is algorithmically compressed by nearly 65%, with mathematically negligible perplexity degradation.</p>
                         </div>
                     </div>
 
                     <!-- Bento 2: Layer Slicing (Light, Span 8) -->
                     <div class="md:col-span-8 bento-card p-10 flex flex-col justify-between relative overflow-hidden">
                         <div class="absolute right-0 top-0 h-full w-1/2 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none"></div>
-                        <div class="relative z-10 max-w-md">
-                            <div class="text-blue-500 font-mono text-sm mb-4">02. Pipeline Parallelism</div>
-                            <h3 class="text-3xl font-medium tracking-tight mb-3">Layer Slicing</h3>
-                            <p class="text-gray-500 font-light leading-relaxed mb-6">The Llama-3.2-1B model contains 16 Transformer Layers. Instead of loading it fully, we slice the 800MB model horizontally across the network.</p>
+                        <div class="relative z-10 max-w-xl">
+                            <div class="text-blue-500 font-mono text-sm mb-4">02. Asymmetric Sharding</div>
+                            <h3 class="text-3xl font-medium tracking-tight mb-3">Pipeline Parallelism</h3>
+                            <p class="text-gray-500 font-light leading-relaxed mb-6 text-sm">Even aggressively quantized, the model remains too large for a single IOx container. Our orchestrator dissects the network structurally. Rather than passing parameter weights, we shard the underlying <em>Transformer Block Layers</em> themselves. Each AP node loads only a precise, highly-specific slice of the calculation graph.</p>
                             <div class="bg-gray-50 border border-gray-200 rounded-2xl p-5 inline-block">
                                 <div class="flex items-center gap-4 mb-2">
-                                    <span class="text-gray-400">Total Size</span>
-                                    <span class="font-mono text-lg font-medium text-[#111]">800 MB</span>
+                                    <span class="text-gray-400 text-sm">Container Payload</span>
+                                    <span class="font-mono text-base font-medium text-[#111]">Sub-block matrix subset</span>
                                 </div>
                                 <div class="flex items-center gap-4 mb-3 pb-3 border-b border-gray-200">
-                                    <span class="text-gray-400">Total APs</span>
-                                    <span class="font-mono text-lg font-medium text-[#111]">÷ 16 Layers</span>
+                                    <span class="text-gray-400 text-sm">Swarm Distribution</span>
+                                    <span class="font-mono text-base font-medium text-[#111]">N / Active APs</span>
                                 </div>
                                 <div class="flex items-center gap-4">
-                                    <span class="text-blue-600 font-medium">Memory per Node</span>
-                                    <span class="font-mono text-xl font-bold text-blue-600">~50 MB</span>
+                                    <span class="text-blue-600 font-medium text-sm">Memory per IOx Node</span>
+                                    <span class="font-mono text-lg font-bold text-blue-600">&lt; Cisco cgroup threshold</span>
                                 </div>
                             </div>
                         </div>
@@ -275,26 +275,26 @@
                             <div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
                             <span class="ml-2 text-gray-500">root@cat9300x-orchestrator:~</span>
                         </div>
-                        <div class="space-y-2 text-gray-400 flex-grow overflow-hidden">
-                            <p class="text-white">$ divaid-cli start --model llama3.2-1b --quant INT4</p>
-                            <p>[INFO] Initializing Swarm Orchestrator...</p>
-                            <p>[INFO] Discovering IOx Nodes on VLAN 100...</p>
-                            <p class="text-[#27C93F]">[OK] Found 16 active CW9178 Access Points.</p>
-                            <p>[INFO] Sharding Llama-3.2-1B.gguf (812MB) into 16 parts...</p>
-                            <p class="text-[#27C93F]">[OK] Layer 0 deployed to 10.0.0.11 (48.1 MB)</p>
-                            <p class="text-[#27C93F]">[OK] Layer 1 deployed to 10.0.0.12 (48.1 MB)</p>
-                            <p>... [Layers 2-14 deployed] ...</p>
-                            <p class="text-[#27C93F]">[OK] Layer 15 deployed to 10.0.0.26 (48.1 MB)</p>
-                            <p class="text-blue-400 mt-4">> Swarm Ready. Awaiting Prompts.</p>
+                        <div class="space-y-2 text-gray-400 flex-grow overflow-hidden text-xs md:text-sm">
+                            <p class="text-white">$ divaid-cli start --arch Transformer --quant INT4</p>
+                            <p>[INFO] Initiating gRPC Swarm Orchestrator process...</p>
+                            <p>[INFO] Discovering accessible IOx instances via LLDP / VLAN...</p>
+                            <p class="text-[#27C93F]">[OK] Discovered high-density network edge: AP Cluster active.</p>
+                            <p>[INFO] Generating asymmetrical tensor graph sharding...</p>
+                            <p class="text-[#27C93F]">[OK] Subgraph block injected into IOx container 10.0.0.11</p>
+                            <p class="text-[#27C93F]">[OK] Subgraph block injected into IOx container 10.0.0.12</p>
+                            <p>... [Sequential network fabric allocation] ...</p>
+                            <p class="text-[#27C93F]">[OK] Final LM-head mapped to Orchestrator Core.</p>
+                            <p class="text-blue-400 mt-4">> Pipeline established. Listening for inference requests.</p>
                         </div>
                     </div>
 
                     <!-- Bento 4: Outcome (Light, Span 4) -->
                     <div class="md:col-span-4 bento-card p-10 flex flex-col justify-between bg-blue-50 border-blue-100">
                         <div>
-                            <div class="text-blue-500 font-mono text-sm mb-4">03. Execution</div>
+                            <div class="text-blue-500 font-mono text-sm mb-4">03. Edge Execution</div>
                             <h3 class="text-3xl font-medium tracking-tight mb-3 text-blue-900">Success</h3>
-                            <p class="text-blue-800/70 font-light leading-relaxed">50MB safely clears the Cisco 100MB hard limit. The container boots, the weights load into RAM, and the AP becomes a permanent Layer executor for the swarm.</p>
+                            <p class="text-blue-800/80 font-light leading-relaxed text-sm">The sharded footprint comfortably sidesteps the aggressive OOM-killer logic of the host OS. The container initializes instantly, mapping weights into ARM RAM without relying on swap, turning the AP into a permanent Layer Executor for the swarm.</p>
                         </div>
                         <div class="mt-8">
                             <svg class="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -308,38 +308,38 @@
             <div id="paradigm" class="mt-40 scroll-mt-32 border-t border-gray-200 pt-32">
                 <div class="grid lg:grid-cols-2 gap-20 items-center">
                     <div>
-                        <h2 class="text-4xl font-medium tracking-tight text-[#111] mb-6">Like a Blockchain for AI Operations.</h2>
+                        <h2 class="text-4xl font-medium tracking-tight text-[#111] mb-6">A Blockchain-inspired Execution Paradigm.</h2>
                         <div class="space-y-6 text-xl text-gray-500 font-light leading-relaxed">
-                            <p>Traditional inference requires a monolithic GPU holding the entire model in VRAM. We shatter this assumption.</p>
-                            <p>Think of blockchain: millions of miners process tiny chunks of cryptographic work that chain together. Divaid uses your ceiling APs exactly like this.</p>
-                            <p>Each AP computes its dedicated transformer layer and passes a microscopic 4KB hidden-state tensor to the next AP via Cisco's mGig backplane in microseconds.</p>
+                            <p>The standard industry approach forces monolithic GPU clusters to handle generation linearly. By treating inference as a series of distributed discrete matrix multiplications, we pivot to a fundamentally different paradigm.</p>
+                            <p>Imagine a cryptographic blockchain: the network avoids centralized computing bottlenecks by forcing millions of disparate nodes to process tiny, fractional hashing tasks that ultimately link together to form a validated chain.</p>
+                            <p>Divaid applies this exact topology to Edge AI. The Cisco access point network acts as the miner pool. A token's hidden-state tensor is serialized and passed across the mGig backplane from node to node, resolving attention layers sequentially without ever leaving your sovereign air-gapped VLAN.</p>
                         </div>
                     </div>
                     <div class="bg-[#111] rounded-[32px] p-10 text-white relative">
-                        <div class="text-sm text-gray-400 font-mono border-b border-gray-800 pb-4 mb-6">Execution Pipeline</div>
+                        <div class="text-sm text-gray-400 font-mono border-b border-gray-800 pb-4 mb-6">Inference Transport Topology</div>
                         
                         <div class="space-y-6">
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-400">1. Orchestrator</span>
-                                <span class="text-sm border border-gray-700 px-3 py-1 rounded-full">Tokenizer & Embeddings</span>
+                                <span class="text-gray-400 text-sm">1. Orchestrator</span>
+                                <span class="text-xs border border-gray-700 px-3 py-1 rounded-full">Tokenization & High-D Embeddings</span>
                             </div>
                             <div class="h-px w-full bg-gradient-to-r from-gray-800 to-transparent"></div>
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-400">2. AP Node 01</span>
-                                <span class="text-sm border border-blue-500/30 text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">Attention + FFN (L0)</span>
+                                <span class="text-gray-400 text-sm">2. Node Cluster Alpha</span>
+                                <span class="text-xs border border-blue-500/30 text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">Attention + FFN Computation</span>
                             </div>
                             <div class="flex items-center justify-between pl-4">
                                 <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                                <span class="text-xs text-gray-500 font-mono">gRPC Tensor 4KB</span>
+                                <span class="text-[10px] text-gray-500 font-mono tracking-widest">gRPC Serialization Payload (~4KB)</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-400">3. AP Node 02</span>
-                                <span class="text-sm border border-blue-500/30 text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">Attention + FFN (L1)</span>
+                                <span class="text-gray-400 text-sm">3. Node Cluster Beta</span>
+                                <span class="text-xs border border-blue-500/30 text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">Sequential FFN Execution</span>
                             </div>
                             <div class="text-gray-600 text-center text-sm py-2">...</div>
                             <div class="flex items-center justify-between">
-                                <span class="text-white font-medium">N. Output</span>
-                                <span class="text-sm bg-white text-black px-3 py-1 rounded-full font-medium">LM Head Token</span>
+                                <span class="text-white text-sm font-medium">N. Resolution</span>
+                                <span class="text-xs bg-white text-black px-3 py-1 rounded-full font-medium">LM Head Decode & Yield</span>
                             </div>
                         </div>
                     </div>
