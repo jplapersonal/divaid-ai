@@ -156,6 +156,36 @@
             </div>
         </nav>
 
+        <style>
+            /* Advanced Animations */
+            .dash-flow { stroke-dasharray: 6; animation: flow 2s linear infinite; }
+            .dash-flow-fast { stroke-dasharray: 8; animation: flow 1s linear infinite; }
+            .dash-flow-reverse { stroke-dasharray: 8; animation: flowReverse 1.5s linear infinite; }
+            @keyframes flow { to { stroke-dashoffset: -24; } }
+            @keyframes flowReverse { to { stroke-dashoffset: 24; } }
+            
+            .node-pulse {
+                animation: nodePulse 2s ease-in-out infinite alternate;
+            }
+            @keyframes nodePulse {
+                0% { filter: drop-shadow(0 0 2px rgba(59, 130, 246, 0.4)); }
+                100% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.9)); }
+            }
+            .node-pulse-green {
+                animation: nodePulseGreen 2s ease-in-out infinite alternate;
+            }
+            @keyframes nodePulseGreen {
+                0% { filter: drop-shadow(0 0 2px rgba(16, 185, 129, 0.4)); }
+                100% { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.9)); }
+            }
+            .ping-alert {
+                animation: pingAlert 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
+            @keyframes pingAlert {
+                75%, 100% { transform: scale(2); opacity: 0; }
+            }
+        </style>
+
         <main class="flex-grow pt-32 pb-24 px-6 max-w-[1400px] mx-auto w-full">
             
             <!-- Hero: Asymmetric & Minimalist -->
@@ -175,8 +205,8 @@
                     </p>
                     
                     <div class="flex items-center gap-4">
-                        <a href="#bento" class="bg-[#111] text-white px-7 py-3.5 rounded-full font-medium hover:bg-[#222] transition shadow-lg shadow-black/10">
-                            Explore Edge Architecture
+                        <a href="#sovereignty" class="bg-[#111] text-white px-7 py-3.5 rounded-full font-medium hover:bg-[#222] transition shadow-lg shadow-black/10">
+                            See the Finance Simulation
                         </a>
                         <a href="#architecture" class="bg-white text-[#111] border border-gray-200 px-7 py-3.5 rounded-full font-medium hover:bg-gray-50 transition">
                             View Pipeline Flow
@@ -184,42 +214,147 @@
                     </div>
                 </div>
 
-                <div class="lg:col-span-5 h-[500px] bg-white rounded-[32px] border border-gray-100 shadow-xl shadow-black/5 flex flex-col items-center justify-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,0,0,0.02)_1px,transparent_1px)]" style="background-size: 20px 20px;"></div>
+                <div class="lg:col-span-5 h-[500px] bg-[#0A0A0A] rounded-[32px] border border-[#222] shadow-2xl flex flex-col items-center justify-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05)_1px,transparent_1px)]" style="background-size: 20px 20px;"></div>
                     
-                    <!-- Abstract Juna-style Graphic -->
-                    <div class="relative z-10 w-full max-w-sm">
-                        <svg viewBox="0 0 400 400" class="w-full h-full drop-shadow-xl">
-                            <!-- Central Node -->
-                            <circle cx="200" cy="200" r="40" fill="#111" class="animate-pulse-soft" />
-                            <text x="200" y="205" fill="#fff" font-size="10" font-family="monospace" font-weight="bold" text-anchor="middle">CATALYST</text>
+                    <!-- Advanced Animated Hero Graphic -->
+                    <div class="relative z-10 w-full max-w-md h-full">
+                        <svg viewBox="0 0 400 400" class="w-full h-full">
+                            <!-- Background Grid -->
+                            <path d="M 0 100 L 400 100 M 0 200 L 400 200 M 0 300 L 400 300 M 100 0 L 100 400 M 200 0 L 200 400 M 300 0 L 300 400" stroke="#222" stroke-width="0.5" />
                             
                             <!-- Connecting Lines -->
-                            <path d="M 200 160 L 120 80" stroke="#E5E7EB" stroke-width="2" />
-                            <path d="M 200 160 L 120 80" stroke="#3B82F6" stroke-width="2" class="dash-flow" />
+                            <path id="path1" d="M 200 160 L 100 80" stroke="#333" stroke-width="2" />
+                            <path d="M 200 160 L 100 80" stroke="#3B82F6" stroke-width="2" class="dash-flow-fast" />
                             
-                            <path d="M 200 160 L 280 80" stroke="#E5E7EB" stroke-width="2" />
-                            <path d="M 200 160 L 280 80" stroke="#3B82F6" stroke-width="2" class="dash-flow" style="animation-delay: 0.5s" />
+                            <path id="path2" d="M 200 160 L 300 80" stroke="#333" stroke-width="2" />
+                            <path d="M 200 160 L 300 80" stroke="#3B82F6" stroke-width="2" class="dash-flow-fast" style="animation-delay: 0.2s" />
                             
-                            <path d="M 200 240 L 120 320" stroke="#E5E7EB" stroke-width="2" />
-                            <path d="M 200 240 L 120 320" stroke="#3B82F6" stroke-width="2" class="dash-flow" style="animation-delay: 1s" />
+                            <path id="path3" d="M 200 240 L 100 320" stroke="#333" stroke-width="2" />
+                            <path d="M 200 240 L 100 320" stroke="#3B82F6" stroke-width="2" class="dash-flow-fast" style="animation-delay: 0.4s" />
                             
-                            <path d="M 200 240 L 280 320" stroke="#E5E7EB" stroke-width="2" />
-                            <path d="M 200 240 L 280 320" stroke="#3B82F6" stroke-width="2" class="dash-flow" style="animation-delay: 1.5s" />
+                            <path id="path4" d="M 200 240 L 300 320" stroke="#333" stroke-width="2" />
+                            <path d="M 200 240 L 300 320" stroke="#3B82F6" stroke-width="2" class="dash-flow-fast" style="animation-delay: 0.6s" />
+
+                            <path d="M 100 80 L 300 80" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4" class="dash-flow" opacity="0.5"/>
+                            <path d="M 300 80 L 300 320" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4" class="dash-flow" opacity="0.5"/>
+                            <path d="M 300 320 L 100 320" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4" class="dash-flow" opacity="0.5"/>
+                            <path d="M 100 320 L 100 80" stroke="#10B981" stroke-width="1.5" stroke-dasharray="4" class="dash-flow" opacity="0.5"/>
+
+                            <!-- Central Catalyst Node -->
+                            <circle cx="200" cy="200" r="45" fill="#000" stroke="#3B82F6" stroke-width="2" class="node-pulse" />
+                            <circle cx="200" cy="200" r="35" fill="#111" />
+                            <text x="200" y="205" fill="#fff" font-size="12" font-family="monospace" font-weight="bold" text-anchor="middle">CATALYST</text>
                             
-                            <!-- AP Nodes -->
-                            <rect x="90" y="60" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="120" y="79" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[n]</text>
-                            
-                            <rect x="250" y="60" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="280" y="79" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[n+1]</text>
-                            
-                            <rect x="90" y="310" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="120" y="329" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[n+k]</text>
-                            
-                            <rect x="250" y="310" width="60" height="30" rx="15" fill="#fff" stroke="#D1D5DB" />
-                            <text x="280" y="329" fill="#4B5563" font-size="10" font-family="monospace" text-anchor="middle">L[last]</text>
+                            <!-- Edge AP Nodes -->
+                            <!-- Node 1 -->
+                            <rect x="70" y="65" width="60" height="30" rx="8" fill="#111" stroke="#3B82F6" class="node-pulse" />
+                            <text x="100" y="84" fill="#60A5FA" font-size="10" font-family="monospace" text-anchor="middle">L[n]</text>
+                            <!-- Node 2 -->
+                            <rect x="270" y="65" width="60" height="30" rx="8" fill="#111" stroke="#3B82F6" class="node-pulse" style="animation-delay: 0.5s" />
+                            <text x="300" y="84" fill="#60A5FA" font-size="10" font-family="monospace" text-anchor="middle">L[n+1]</text>
+                            <!-- Node 3 -->
+                            <rect x="70" y="305" width="60" height="30" rx="8" fill="#111" stroke="#3B82F6" class="node-pulse" style="animation-delay: 1.0s" />
+                            <text x="100" y="324" fill="#60A5FA" font-size="10" font-family="monospace" text-anchor="middle">L[n+k]</text>
+                            <!-- Node 4 -->
+                            <rect x="270" y="305" width="60" height="30" rx="8" fill="#111" stroke="#3B82F6" class="node-pulse" style="animation-delay: 1.5s" />
+                            <text x="300" y="324" fill="#60A5FA" font-size="10" font-family="monospace" text-anchor="middle">L[last]</text>
+
+                            <!-- Floating data packets -->
+                            <circle r="4" fill="#60A5FA">
+                                <animateMotion dur="2s" repeatCount="indefinite" path="M 200 160 L 100 80" />
+                            </circle>
+                            <circle r="4" fill="#60A5FA">
+                                <animateMotion dur="2s" begin="0.5s" repeatCount="indefinite" path="M 200 160 L 300 80" />
+                            </circle>
                         </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Absolute Data Sovereignty Simulation -->
+            <div id="sovereignty" class="mt-40 scroll-mt-32">
+                <div class="mb-12 max-w-3xl">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-xs font-semibold tracking-wide text-red-600 mb-6 shadow-sm">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        Zero-Trust Execution
+                    </div>
+                    <h2 class="text-4xl font-medium tracking-tight text-[#111] mb-4">Absolute Data Sovereignty.</h2>
+                    <p class="text-xl text-gray-500 font-light leading-relaxed">Consider a financial institution processing highly sensitive PII (Personally Identifiable Information). Cloud-based LLMs leak context via external APIs. Divaid keeps the prompt entirely localized. <strong>The inference loop is physically sandboxed within the walls of the branch.</strong></p>
+                </div>
+
+                <!-- Financial Branch Simulation Graphic -->
+                <div class="w-full bg-[#050505] rounded-3xl border border-[#222] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                    <!-- Grid background -->
+                    <div class="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)]" style="background-size: 40px 40px;"></div>
+                    
+                    <div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+                        <div class="w-full aspect-video md:aspect-[4/3] relative">
+                            <svg viewBox="0 0 800 600" class="w-full h-full">
+                                <!-- Cloud / External -->
+                                <rect x="50" y="20" width="700" height="80" rx="16" fill="#111" stroke="#333" stroke-dasharray="4"/>
+                                <text x="400" y="65" fill="#555" font-family="monospace" font-size="16" letter-spacing="2" text-anchor="middle">EXTERNAL CLOUD / INTERNET (BLOCKED)</text>
+
+                                <!-- Air Gap Boundary -->
+                                <line x1="50" y1="140" x2="750" y2="140" stroke="#EF4444" stroke-width="2" stroke-dasharray="8"/>
+                                <rect x="300" y="125" width="200" height="30" rx="15" fill="#EF4444"/>
+                                <text x="400" y="145" fill="#fff" font-size="12" font-weight="bold" font-family="sans-serif" letter-spacing="1" text-anchor="middle">AIR-GAP FIREWALL</text>
+
+                                <!-- Denied Packets Animation -->
+                                <path id="denied-path" d="M 400 240 L 400 155" stroke="none" />
+                                <circle r="6" fill="#EF4444">
+                                    <animateMotion dur="1.5s" repeatCount="indefinite" path="M 400 240 L 400 155" />
+                                </circle>
+                                <circle cx="400" cy="155" r="20" fill="none" stroke="#EF4444" stroke-width="2" opacity="0">
+                                    <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+                                    <animate attributeName="r" values="5;30" dur="1.5s" repeatCount="indefinite" />
+                                </circle>
+
+                                <!-- Internal Branch VLAN Box -->
+                                <rect x="50" y="200" width="700" height="350" rx="16" fill="rgba(16, 185, 129, 0.05)" stroke="#10B981" stroke-width="1" stroke-dasharray="8"/>
+                                <text x="400" y="530" fill="#10B981" font-family="monospace" font-size="14" letter-spacing="2" text-anchor="middle">LOCAL BRANCH VLAN (SECURE)</text>
+
+                                <!-- Core Switch -->
+                                <circle cx="400" cy="280" r="40" fill="#000" stroke="#3B82F6" stroke-width="3" class="node-pulse"/>
+                                <text x="400" y="285" fill="#fff" font-size="14" font-weight="bold" font-family="monospace" text-anchor="middle">CORE</text>
+
+                                <!-- AP Vault -->
+                                <rect x="120" y="400" width="120" height="40" rx="10" fill="#111" stroke="#10B981" stroke-width="2" class="node-pulse-green"/>
+                                <text x="180" y="425" fill="#10B981" font-size="12" font-family="monospace" text-anchor="middle">AP-VAULT</text>
+
+                                <!-- AP Teller -->
+                                <rect x="340" y="440" width="120" height="40" rx="10" fill="#111" stroke="#10B981" stroke-width="2" class="node-pulse-green" style="animation-delay: 0.5s"/>
+                                <text x="400" y="465" fill="#10B981" font-size="12" font-family="monospace" text-anchor="middle">AP-TELLER</text>
+
+                                <!-- AP Lobby -->
+                                <rect x="560" y="400" width="120" height="40" rx="10" fill="#111" stroke="#10B981" stroke-width="2" class="node-pulse-green" style="animation-delay: 1.0s"/>
+                                <text x="620" y="425" fill="#10B981" font-size="12" font-family="monospace" text-anchor="middle">AP-LOBBY</text>
+
+                                <!-- Internal Data Paths -->
+                                <path d="M 370 305 L 180 400" stroke="#333" stroke-width="2" />
+                                <path d="M 400 320 L 400 440" stroke="#333" stroke-width="2" />
+                                <path d="M 430 305 L 620 400" stroke="#333" stroke-width="2" />
+
+                                <!-- Animated Internal Tensors -->
+                                <path d="M 370 305 L 180 400" stroke="#10B981" stroke-width="3" class="dash-flow-fast"/>
+                                <path d="M 180 400 L 400 440" stroke="#10B981" stroke-width="3" class="dash-flow-fast" style="animation-delay: 0.5s"/>
+                                <path d="M 400 440 L 620 400" stroke="#10B981" stroke-width="3" class="dash-flow-fast" style="animation-delay: 1.0s"/>
+                                <path d="M 620 400 L 430 305" stroke="#10B981" stroke-width="3" class="dash-flow-fast" style="animation-delay: 1.5s"/>
+
+                                <!-- Flowing Tokens -->
+                                <circle r="6" fill="#10B981">
+                                    <animateMotion dur="3s" repeatCount="indefinite" path="M 370 305 L 180 400 L 400 440 L 620 400 L 430 305" />
+                                </circle>
+                            </svg>
+                        </div>
+                        <div class="space-y-6 text-gray-400 font-light text-lg">
+                            <p>Every token generated in this simulation travels purely through the physical copper and fiber inside the building.</p>
+                            <p>When a loan officer queries a high-net-worth client's profile, the Orchestrator <span class="text-blue-400 font-medium">Core Switch</span> tokenizes the prompt. The subsequent mathematical execution bounces sequentially between <span class="text-green-400 font-medium">AP-Vault</span>, <span class="text-green-400 font-medium">AP-Teller</span>, and <span class="text-green-400 font-medium">AP-Lobby</span>.</p>
+                            <div class="bg-[#111] p-4 rounded-xl border border-red-500/30 flex items-start gap-4">
+                                <svg class="w-6 h-6 text-red-500 shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                                <p class="text-sm text-red-200">The Firewall strictly drops any external inference API calls. The internal VLAN acts as an impenetrable execution substrate.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -315,10 +450,12 @@
                             <p>Divaid applies this exact topology to Edge AI. The Cisco access point network acts as the miner pool. A token's hidden-state tensor is serialized and passed across the mGig backplane from node to node, resolving attention layers sequentially without ever leaving your sovereign air-gapped VLAN.</p>
                         </div>
                     </div>
-                    <div class="bg-[#111] rounded-[32px] p-10 text-white relative">
-                        <div class="text-sm text-gray-400 font-mono border-b border-gray-800 pb-4 mb-6">Inference Transport Topology</div>
+                    <div class="bg-[#111] rounded-[32px] p-10 text-white relative overflow-hidden">
+                        <!-- Background glow -->
+                        <div class="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/10 blur-3xl rounded-full pointer-events-none"></div>
+                        <div class="text-sm text-gray-400 font-mono border-b border-gray-800 pb-4 mb-6 relative z-10">Inference Transport Topology</div>
                         
-                        <div class="space-y-6">
+                        <div class="space-y-6 relative z-10">
                             <div class="flex items-center justify-between">
                                 <span class="text-gray-400 text-sm">1. Orchestrator</span>
                                 <span class="text-xs border border-gray-700 px-3 py-1 rounded-full">Tokenization & High-D Embeddings</span>
@@ -329,7 +466,7 @@
                                 <span class="text-xs border border-blue-500/30 text-blue-400 px-3 py-1 rounded-full bg-blue-500/10">Attention + FFN Computation</span>
                             </div>
                             <div class="flex items-center justify-between pl-4">
-                                <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                <svg class="w-4 h-4 text-gray-600 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
                                 <span class="text-[10px] text-gray-500 font-mono tracking-widest">gRPC Serialization Payload (~4KB)</span>
                             </div>
                             <div class="flex items-center justify-between">
