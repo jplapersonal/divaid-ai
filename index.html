@@ -94,109 +94,181 @@
 
     <!-- Protected Content (Hidden by default) -->
     <div id="protected-content" class="hidden flex-col min-h-screen">
+        <style>
+            .tensor-path {
+                stroke-dasharray: 8;
+                animation: tensorFlow 1s linear infinite;
+            }
+            @keyframes tensorFlow {
+                to { stroke-dashoffset: -16; }
+            }
+            .pulse-ring {
+                animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+            }
+            .grid-bg {
+                background-image: 
+                    linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+                background-size: 40px 40px;
+            }
+        </style>
 
         <!-- Navigation -->
         <nav class="fixed w-full z-50 glass-panel !border-t-0 !border-l-0 !border-r-0 !rounded-none !backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="text-2xl font-black tracking-tighter text-slate-900">Divaid<span class="text-brand-500">.ai</span></div>
-            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
-                <a href="#architecture" class="hover:text-brand-600 transition">Architecture</a>
-                <a href="#feasibility" class="hover:text-brand-600 transition">Technical Proof</a>
-                <a href="#use-cases" class="hover:text-brand-600 transition">Use Cases</a>
+            <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <svg class="w-8 h-8 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                        <line x1="12" y1="22" x2="12" y2="12"></line>
+                        <line x1="22" y1="8.5" x2="12" y2="12"></line>
+                        <line x1="2" y1="8.5" x2="12" y2="12"></line>
+                    </svg>
+                    <div class="text-2xl font-black tracking-tighter text-slate-900">Divaid<span class="text-brand-500">.ai</span></div>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-bold text-slate-600">
+                    <a href="#paradigm" class="hover:text-brand-600 transition">The Paradigm</a>
+                    <a href="#architecture" class="hover:text-brand-600 transition">Network Architecture</a>
+                    <a href="#the-magic" class="hover:text-brand-600 transition">IOx Constraint Breakthrough</a>
+                </div>
+                <button class="bg-slate-900 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-800 transition shadow-sm">
+                    Access Engineering Repo
+                </button>
             </div>
-            <button class="bg-slate-900 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-slate-800 transition shadow-sm">
-                Request Engineering Deck
-            </button>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Hero Section -->
-    <main class="flex-grow pt-32 pb-24 px-6">
-        <div class="max-w-5xl mx-auto text-center mt-12 mb-20">
-            <div class="inline-flex items-center space-x-2 bg-white border border-brand-100 text-brand-600 px-4 py-1.5 rounded-full text-sm font-semibold mb-8 shadow-sm">
-                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
-                <span>Built for Cisco Catalyst & Wi-Fi 7 Ecosystem</span>
-            </div>
+        <!-- Hero Section -->
+        <main class="flex-grow pt-32 pb-24 px-6 relative overflow-hidden bg-white">
+            <div class="absolute inset-0 grid-bg z-0 pointer-events-none"></div>
             
-            <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[1.1] mb-8 text-slate-900">
-                Your Network Infrastructure is the <span class="gradient-text">Supercomputer.</span>
-            </h1>
-            
-            <p class="text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed font-medium">
-                Divaid introduces <strong>Model Sharding</strong> for Cisco networks. We slice Small Language Models (SLMs) layer-by-layer and distribute them across your existing Access Points and Switches. 
-                <br/><br/>Zero dedicated GPUs. 100% Air-Gapped. Total Data Sovereignty.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="#feasibility" class="bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-lg shadow-brand-500/30">
-                    Read the Technical Feasibility
-                </a>
-                <a href="#architecture" class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition shadow-sm">
-                    Explore Architecture
-                </a>
-            </div>
-        </div>
-
-        <!-- The Breakthrough / Feasibility -->
-        <section id="feasibility" class="max-w-6xl mx-auto my-32 scroll-mt-32">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-4">The Mathematical Breakthrough</h2>
-                <p class="text-lg text-slate-600 max-w-2xl mx-auto">How we bypass the strict 100MB RAM limit of Cisco Application Hosting (IOx) containers on Access Points.</p>
+            <div class="max-w-5xl mx-auto text-center mt-12 mb-20 relative z-10">
+                <div class="inline-flex items-center space-x-2 bg-brand-50 border border-brand-200 text-brand-700 px-4 py-1.5 rounded-full text-sm font-bold mb-8 shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5 mr-1">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-brand-500"></span>
+                    </span>
+                    <span>Exclusive Architecture Concept for Cisco Edge</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[1.05] mb-8 text-slate-900">
+                    The Decentralized <br/><span class="gradient-text">AI Execution Grid.</span>
+                </h1>
+                
+                <p class="text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed font-medium">
+                    Stop treating AI as a centralized cloud payload. Divaid transforms your existing Cisco Catalyst Switches and Wi-Fi 7 CW917X Access Points into a distributed farm of highly-specialized AI task executors. 
+                </p>
+                
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#the-magic" class="bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-xl">
+                        Discover the IOx Breakthrough
+                    </a>
+                    <a href="#architecture" class="bg-white hover:bg-slate-50 text-slate-900 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg transition shadow-sm">
+                        View Pipeline Architecture
+                    </a>
+                </div>
             </div>
 
-            <div class="glass-panel p-8 md:p-12">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Animated Grid Visualization -->
+            <div class="max-w-4xl mx-auto relative z-10 my-16 bg-white p-8 rounded-2xl border border-slate-200 shadow-2xl">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                    <!-- Orchestrator -->
+                    <div class="relative w-48 h-48 bg-slate-900 rounded-xl flex flex-col items-center justify-center text-white border-4 border-slate-800 shadow-lg z-20">
+                        <svg class="w-12 h-12 mb-3 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                        <span class="font-black text-lg tracking-tight">Catalyst 9300X</span>
+                        <span class="text-xs text-slate-400 mt-1 font-mono">Tokenizer / KV Cache</span>
+                    </div>
+
+                    <!-- Connection Paths (Animated) -->
+                    <div class="hidden md:block flex-grow relative h-32">
+                        <svg width="100%" height="100%" class="absolute inset-0">
+                            <path d="M 0,64 L 100%,20" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+                            <path d="M 0,64 L 100%,20" fill="none" stroke="#0ea5e9" stroke-width="3" class="tensor-path"/>
+                            
+                            <path d="M 0,64 L 100%,108" fill="none" stroke="#e2e8f0" stroke-width="2"/>
+                            <path d="M 0,64 L 100%,108" fill="none" stroke="#0ea5e9" stroke-width="3" class="tensor-path" style="animation-delay: 0.3s"/>
+                        </svg>
+                    </div>
+
+                    <!-- AP Nodes -->
+                    <div class="flex flex-col gap-6 z-20">
+                        <div class="flex items-center gap-4 bg-brand-50 border border-brand-200 px-6 py-4 rounded-xl shadow-sm">
+                            <div class="w-3 h-3 bg-brand-500 rounded-full animate-pulse"></div>
+                            <div>
+                                <div class="font-bold text-slate-900">AP-CW9178-01</div>
+                                <div class="text-xs text-brand-700 font-mono">Executing Layer 0</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-brand-50 border border-brand-200 px-6 py-4 rounded-xl shadow-sm">
+                            <div class="w-3 h-3 bg-brand-500 rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
+                            <div>
+                                <div class="font-bold text-slate-900">AP-CW9178-02</div>
+                                <div class="text-xs text-brand-700 font-mono">Executing Layer 1</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- The Paradigm / Blockchain Metaphor -->
+        <section id="paradigm" class="bg-slate-50 py-32 px-6 border-y border-slate-200 scroll-mt-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h3 class="text-2xl font-bold mb-4 text-slate-900">Pipeline Parallelism on the Edge</h3>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            Cisco APs (like the CW9178) have capable ARM64 processors but strict `cgroups` limiting IOx containers to ~100MB RAM. An entire LLM cannot fit. 
+                        <h2 class="text-sm font-black text-brand-600 uppercase tracking-widest mb-3">The Paradigm Shift</h2>
+                        <h3 class="text-4xl font-black text-slate-900 mb-6 leading-tight">Like a Blockchain for AI Operations</h3>
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                            Traditional LLM inference requires a single, monolithic GPU holding the entire model in VRAM. Divaid completely shatters this assumption using Pipeline Parallelism.
                         </p>
-                        <p class="text-slate-600 mb-6 leading-relaxed">
-                            <strong>Our approach:</strong> We utilize Pipeline Parallelism. We take a modern SLM (e.g., Llama-3.2-1B), apply 4-bit GGUF quantization reducing it to ~800MB, and slice its 16 Transformer layers. Each AP acts as a single-layer processor.
+                        <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                            Think of it like a blockchain network: millions of miners don't solve the entire cryptographic chain at once. They process tiny, discrete chunks of work that mathematically chain together. 
                         </p>
-                        <ul class="space-y-4 text-slate-700 font-medium">
+                        <ul class="space-y-4 mt-8">
                             <li class="flex items-start">
-                                <svg class="w-6 h-6 text-brand-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span><strong>Memory Footprint:</strong> 1 Layer = ~50MB. Fits safely under the 100MB IOx limit.</span>
+                                <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center text-brand-600 font-bold mr-4 shrink-0">1</div>
+                                <p class="text-slate-700"><strong class="text-slate-900">Sharded Weights:</strong> The LLM is sliced layer by layer. Each Access Point in your ceiling holds only a microscopic fraction of the model.</p>
                             </li>
                             <li class="flex items-start">
-                                <svg class="w-6 h-6 text-brand-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span><strong>Network Latency:</strong> Passing the hidden state tensor (4KB) between APs via the Catalyst switch backplane takes &lt;0.1ms per hop.</span>
+                                <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center text-brand-600 font-bold mr-4 shrink-0">2</div>
+                                <p class="text-slate-700"><strong class="text-slate-900">Discrete Computation:</strong> An AP receives a hidden-state tensor, performs matrix multiplication using its local layer, and transmits the resulting tensor to the next AP.</p>
                             </li>
                             <li class="flex items-start">
-                                <svg class="w-6 h-6 text-brand-500 mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                                <span><strong>Scale:</strong> 16 APs can run a 1 Billion parameter model. A standard school or office with 150 APs becomes a massive parallel compute swarm.</span>
+                                <div class="w-8 h-8 rounded-lg bg-white border border-slate-200 shadow-sm flex items-center justify-center text-brand-600 font-bold mr-4 shrink-0">3</div>
+                                <p class="text-slate-700"><strong class="text-slate-900">The Network is the Bus:</strong> Utilizing Cisco's ultra-low latency mGig backplane, tensor passing (barely ~4KB of data) happens in microseconds.</p>
                             </li>
                         </ul>
                     </div>
-                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 font-mono text-sm shadow-inner relative overflow-hidden">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-400 to-brand-600"></div>
-                        <div class="text-slate-400 mb-4">// System.PoC_Math_Calculation</div>
-                        
-                        <div class="space-y-3 text-slate-700">
-                            <div class="flex justify-between border-b border-slate-200 pb-2">
-                                <span class="font-semibold">Model:</span> 
-                                <span class="text-brand-600">Llama-3.2-1B</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-200 pb-2">
-                                <span class="font-semibold">Quantization:</span> 
-                                <span class="text-brand-600">INT4 (GGUF Q4_K_M)</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-200 pb-2">
-                                <span class="font-semibold">Total Size:</span> 
-                                <span class="text-brand-600">~800 MB</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-200 pb-2">
-                                <span class="font-semibold">Transformer Layers:</span> 
-                                <span class="text-brand-600">16 Blocks</span>
-                            </div>
-                            <div class="flex justify-between border-b border-slate-200 pb-2 bg-brand-50 -mx-6 px-6 py-2">
-                                <span class="font-bold text-slate-900">RAM Per IOx Node:</span> 
-                                <span class="font-bold text-brand-600">~50 MB</span>
-                            </div>
-                            <div class="flex justify-between pt-2">
-                                <span class="font-semibold text-emerald-600">Status:</span> 
-                                <span class="font-bold text-emerald-600">Hardware Compliant (<= 100MB)</span>
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-brand-400 to-brand-600 rounded-3xl transform rotate-3 scale-105 opacity-20 blur-xl"></div>
+                        <div class="glass-panel p-8 relative rounded-3xl border border-slate-200 bg-white/90">
+                            <h4 class="font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">Token Lifecycle Validation</h4>
+                            <div class="space-y-4 font-mono text-sm">
+                                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                                    <span class="text-slate-500">Input:</span>
+                                    <span class="font-semibold text-brand-700">"Deploy security policy"</span>
+                                </div>
+                                <div class="flex flex-col items-center justify-center py-2 text-slate-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                </div>
+                                <div class="p-3 bg-slate-900 text-emerald-400 rounded-lg border border-slate-800">
+                                    [Orchestrator] Tokenized: [842, 1145, 992]<br/>
+                                    [Orchestrator] Embedding Vector: [4096 dims]
+                                </div>
+                                <div class="flex flex-col items-center justify-center py-2 text-slate-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                </div>
+                                <div class="flex gap-2">
+                                    <div class="flex-1 p-3 bg-brand-50 border border-brand-200 text-brand-800 rounded-lg text-center font-bold shadow-sm">AP1<br/>L0</div>
+                                    <div class="flex-1 p-3 bg-brand-50 border border-brand-200 text-brand-800 rounded-lg text-center font-bold shadow-sm">AP2<br/>L1</div>
+                                    <div class="flex-1 p-3 bg-brand-50 border border-brand-200 text-brand-800 rounded-lg text-center font-bold shadow-sm">AP3<br/>L2</div>
+                                    <div class="flex-1 p-3 bg-brand-50 border border-brand-200 text-brand-800 rounded-lg text-center font-bold shadow-sm">...</div>
+                                </div>
+                                <div class="flex flex-col items-center justify-center py-2 text-slate-400">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-lg flex justify-between items-center border border-slate-200">
+                                    <span class="text-slate-500">Output:</span>
+                                    <span class="font-bold text-slate-900">Token ID 441 ("Policy")</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -204,77 +276,140 @@
             </div>
         </section>
 
-        <!-- Architecture Visualization -->
-        <section id="architecture" class="max-w-6xl mx-auto my-32 scroll-mt-32">
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-12 text-center">Data Flow Architecture</h2>
-            
-            <div class="grid md:grid-cols-4 gap-6">
-                <!-- Catalyst Router -->
-                <div class="glass-panel p-6 flex flex-col items-center justify-center text-center node-flow">
-                    <div class="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"></path></svg>
+        <!-- The Magic: Breaking the IOx Limit -->
+        <section id="the-magic" class="bg-white py-32 px-6 scroll-mt-20">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-20">
+                    <div class="inline-block bg-rose-100 text-rose-700 px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide uppercase">The Technical Bottleneck</div>
+                    <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">The <span class="text-brand-500">Magic:</span> Beating the 100MB IOx Limit</h2>
+                    <p class="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                        Cisco CW917X Access Points possess incredibly capable quad-core ARM64 processors. However, Cisco Application Hosting (IOx) restricts Docker containers via <code class="bg-slate-100 px-2 py-0.5 rounded text-slate-800 text-lg">cgroups</code> to roughly <strong>100MB of RAM</strong>. A modern LLM simply cannot fit. <br/><br/>Here is how we solved the mathematically impossible.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Step 1 -->
+                    <div class="glass-panel p-8 bg-slate-50 border-t-4 border-t-slate-800 relative overflow-hidden group hover:shadow-xl transition">
+                        <div class="absolute -right-4 -top-4 w-24 h-24 bg-slate-200 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                        <div class="text-4xl font-black text-slate-200 mb-4">01</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Model Selection</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            We start with a highly optimized Small Language Model (SLM) such as Meta's <strong class="text-slate-900">Llama-3.2-1B</strong>. At FP16 precision, this model weighs around 2.2 Gigabytes.
+                        </p>
                     </div>
-                    <h4 class="font-bold text-slate-900">Catalyst 9300X</h4>
-                    <p class="text-xs text-slate-500 mt-2">Swarm Orchestrator<br/>Token Generation</p>
-                </div>
 
-                <!-- AP 1 -->
-                <div class="glass-panel p-6 flex flex-col items-center justify-center text-center node-flow">
-                    <div class="w-16 h-16 bg-white border-2 border-brand-200 rounded-full flex items-center justify-center mb-4 shadow-sm text-brand-600 font-black text-xl">L1</div>
-                    <h4 class="font-bold text-slate-900">AP Node 01</h4>
-                    <p class="text-xs text-slate-500 mt-2">Processing Layer 1<br/>(50MB RAM)</p>
-                </div>
-
-                <!-- AP 2 -->
-                <div class="glass-panel p-6 flex flex-col items-center justify-center text-center node-flow" style="animation-delay: 0.2s;">
-                    <div class="w-16 h-16 bg-white border-2 border-brand-200 rounded-full flex items-center justify-center mb-4 shadow-sm text-brand-600 font-black text-xl">L2</div>
-                    <h4 class="font-bold text-slate-900">AP Node 02</h4>
-                    <p class="text-xs text-slate-500 mt-2">Processing Layer 2<br/>(50MB RAM)</p>
-                </div>
-
-                <!-- Output -->
-                <div class="glass-panel p-6 flex flex-col items-center justify-center text-center bg-brand-50 border-brand-200">
-                    <div class="w-16 h-16 bg-brand-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg shadow-brand-500/30">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                    <!-- Step 2 -->
+                    <div class="glass-panel p-8 bg-brand-50 border-t-4 border-t-brand-500 relative overflow-hidden group hover:shadow-xl transition">
+                        <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand-200 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                        <div class="text-4xl font-black text-brand-200 mb-4">02</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">GGUF Quantization</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            We apply <strong class="text-brand-700">INT4 GGUF (Q4_K_M)</strong> quantization. By compressing the weights to 4 bits, the total model footprint is drastically reduced from 2.2GB down to roughly <strong>800MB</strong> with near-zero perplexity degradation.
+                        </p>
                     </div>
-                    <h4 class="font-bold text-brand-900">Final Output</h4>
-                    <p class="text-xs text-brand-700 mt-2">Token returned to<br/>Catalyst securely</p>
-                </div>
-            </div>
-            <p class="text-center text-sm text-slate-500 mt-6 font-medium">Tensors (~4KB) travel securely over the local network via ultra-low latency gRPC.</p>
-        </section>
 
-        <!-- Use Cases -->
-        <section id="use-cases" class="max-w-6xl mx-auto my-32 scroll-mt-32">
-            <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-12 text-center">Enterprise Applications</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-panel p-8 border-t-4 border-t-rose-500">
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Defense & Govt</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Air-gapped intelligence. Deploy a Catalyst switch and a few APs to provide full LLM capabilities in remote bases without internet access.</p>
-                </div>
-                <div class="glass-panel p-8 border-t-4 border-t-sky-500">
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Healthcare</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Process patient records and perform clinical NLP using hospital Wi-Fi infrastructure. 100% HIPAA compliant, zero cloud exposure.</p>
-                </div>
-                <div class="glass-panel p-8 border-t-4 border-t-emerald-500">
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Finance</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Local document intelligence and risk analysis executed directly on the branch's Cisco network, meeting strict PCI-DSS and GDPR rules.</p>
-                </div>
-                <div class="glass-panel p-8 border-t-4 border-t-amber-500">
-                    <h3 class="text-xl font-bold mb-3 text-slate-900">Industry 4.0</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed">Manufacturing plant APs process IoT telemetry locally, applying predictive maintenance AI without requiring dedicated server rooms.</p>
+                    <!-- Step 3 -->
+                    <div class="glass-panel p-8 bg-emerald-50 border-t-4 border-t-emerald-500 relative overflow-hidden group hover:shadow-xl transition">
+                        <div class="absolute -right-4 -top-4 w-24 h-24 bg-emerald-200 rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500"></div>
+                        <div class="text-4xl font-black text-emerald-200 mb-4">03</div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Layer Slicing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            The Llama-3.2-1B model is composed of 16 Transformer Layers. We split the 800MB model horizontally into 16 discrete chunks.
+                            <br/><br/>
+                            <strong class="text-emerald-700">800MB ÷ 16 Layers = ~50MB per AP.</strong>
+                        </p>
+                        <div class="bg-emerald-500 text-white text-xs font-bold px-3 py-2 rounded-lg text-center shadow-inner">
+                            50MB &lt; 100MB IOx Threshold. Success.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-    </main>
+        <!-- Network Architecture Technical Specs -->
+        <section id="architecture" class="bg-slate-900 py-32 px-6 text-slate-300 scroll-mt-20 border-t border-slate-800">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-20">
+                    <h2 class="text-3xl md:text-4xl font-black text-white mb-6">Execution Pipeline Details</h2>
+                    <p class="text-lg text-slate-400 max-w-2xl mx-auto">Deep dive into the routing and computation mechanics deployed across the Cisco fabric.</p>
+                </div>
 
-    <footer class="bg-white border-t border-slate-200 py-12 text-center text-slate-500 text-sm">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
-            <div class="font-bold text-slate-900 text-lg mb-4 md:mb-0">Divaid<span class="text-brand-500">.ai</span></div>
-            <p>&copy; 2026 Divaid. Designed for the Cisco Partner Innovation Ecosystem.</p>
-        </div>
-    </footer>
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <div class="space-y-12">
+                        <!-- Spec 1 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2 flex items-center">
+                                <svg class="w-6 h-6 text-brand-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                Orchestrator Node (Catalyst)
+                            </h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                The Cisco Catalyst Switch (e.g., 9300X/9400) acts as the swarm master. It hosts the Tokenizer, the immense Embedding Table lookup, and the final LM Head. When a prompt is received, it converts text to tokens, fetches the 4096-dimensional embedding vectors, and transmits the initial tensor to the first AP over gRPC.
+                            </p>
+                        </div>
+                        
+                        <!-- Spec 2 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2 flex items-center">
+                                <svg class="w-6 h-6 text-brand-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                                Worker Nodes (CW917X APs)
+                            </h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                Each AP runs a highly stripped-down inference engine written in C++ (ggml-based). Upon receiving a tensor via its wired mGig connection, it computes Attention and Feed-Forward Network (FFN) logic for its specific layer. It maintains its own local subset of the KV Cache to support generation.
+                            </p>
+                        </div>
+
+                        <!-- Spec 3 -->
+                        <div>
+                            <h4 class="text-xl font-bold text-white mb-2 flex items-center">
+                                <svg class="w-6 h-6 text-brand-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                                100% Air-Gapped Data Sovereignty
+                            </h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">
+                                No APIs to the cloud. No subscriptions. The data never leaves the VLAN. The models are loaded directly into the network hardware. Perfect for defense, highly secure manufacturing, or isolated financial branches.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Terminal Simulation -->
+                    <div class="bg-black rounded-xl border border-slate-700 p-6 font-mono text-xs text-emerald-400 shadow-2xl relative overflow-hidden flex flex-col h-full min-h-[400px]">
+                        <div class="flex items-center space-x-2 mb-4 pb-4 border-b border-slate-800">
+                            <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                            <span class="ml-4 text-slate-500">root@cat9300x-orchestrator:~</span>
+                        </div>
+                        <div class="space-y-2 opacity-90 overflow-y-auto">
+                            <p>$ divaid-cli start --model llama3.2-1b --quant INT4</p>
+                            <p class="text-slate-400">[INFO] Initializing Swarm Orchestrator...</p>
+                            <p class="text-slate-400">[INFO] Discovering IOx Nodes on VLAN 100...</p>
+                            <p>[OK] Found 16 active CW9178 Access Points.</p>
+                            <p class="text-slate-400">[INFO] Sharding Llama-3.2-1B.gguf (812MB) into 16 parts...</p>
+                            <p>[OK] Layer 0 deployed to 10.0.0.11 (48.1 MB)</p>
+                            <p>[OK] Layer 1 deployed to 10.0.0.12 (48.1 MB)</p>
+                            <p class="text-slate-500">... [Layers 2-14 deployed] ...</p>
+                            <p>[OK] Layer 15 deployed to 10.0.0.26 (48.1 MB)</p>
+                            <p class="text-brand-400 font-bold mt-4">>> Swarm Ready. Awaiting Prompts.</p>
+                            <p class="text-slate-400 mt-2">[RECV] Prompt: "Generate network security report..."</p>
+                            <p class="text-yellow-400">[EXEC] Orchestrator Embedding -> AP 0 -> AP 1 -> ... -> AP 15</p>
+                            <p class="text-emerald-400">[OK] Token Generated: "The"</p>
+                        </div>
+                        <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-400 to-brand-500"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-slate-950 border-t border-slate-900 py-12 text-center text-slate-600 text-sm">
+            <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-2 mb-4 md:mb-0">
+                    <svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                    </svg>
+                    <div class="font-bold text-slate-400 text-lg">Divaid<span class="text-brand-600">.ai</span></div>
+                </div>
+                <p>Designed for the Cisco Partner Innovation Ecosystem. Highly Confidential.</p>
+            </div>
+        </footer>
     </div> <!-- End Protected Content -->
 
     <script>
