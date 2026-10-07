@@ -36,7 +36,7 @@ export async function onRequestPost({ request, env }) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          sender: { name: 'Divaid AI', email: 'noreply@divaid.ai' },
+          sender: { name: 'Divaid AI', email: 'noreply@kiw.one' },
           to: [{ email }],
           subject: 'Divaid.ai Access Code',
           htmlContent
