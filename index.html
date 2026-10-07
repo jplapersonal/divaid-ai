@@ -299,7 +299,7 @@
             if (formLogin) {
                 formLogin.addEventListener('submit', async (e) => {
                     e.preventDefault();
-                    const email = document.getElementById('email-input').value;
+                    const email = document.getElementById('email-input').value.trim();
                     const btn = document.getElementById('btn-send-otp');
                     
                     if (!email) {
@@ -322,8 +322,11 @@
                         if (!res.ok) throw new Error(data.error || 'Failed to send code');
                         if (data.signature) currentSignature = data.signature;
                         
-                        document.getElementById('form-login').classList.add('hidden');
+                        // Force DOM change directly via inline styles to bypass any CSS conflicts
+                        document.getElementById('form-login').style.display = 'none';
                         document.getElementById('form-otp').classList.remove('hidden');
+                        document.getElementById('form-otp').style.display = 'block';
+                        
                         showMsg('Access code sent to your email.', false);
                     } catch (err) {
                         showMsg(err.message);
