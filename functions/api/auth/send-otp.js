@@ -29,7 +29,7 @@ export async function onRequestPost({ request, env }) {
         </div>
       `;
 
-      await fetch('https://api.brevo.com/v3/smtp/email', {
+      const brevoRes = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: {
           'api-key': env.BREVO_API_KEY,
@@ -42,6 +42,11 @@ export async function onRequestPost({ request, env }) {
           htmlContent
         })
       });
+      
+      if (!brevoRes.ok) {
+        const brevoErr = await brevoRes.text();
+        return new Response(JSON.stringify({ error: 'Brevo API Error: ' + brevoErr }), { status: 500 });
+      }
     } else {
       console.log(`[LOCAL DEV] OTP for ${email}: ${code}`);
     }
