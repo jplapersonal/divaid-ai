@@ -131,10 +131,14 @@
                     </svg>
                     <span class="text-xl font-medium tracking-tight">divaid.AI</span>
                 </div>
-                <div class="hidden md:flex space-x-8 text-sm font-medium text-[#666]">
+                <div class="hidden md:flex space-x-8 text-sm font-medium text-[#666] items-center">
                     <a href="#paradigm" class="hover:text-[#111] transition-colors">Paradigm</a>
                     <a href="#bento" class="hover:text-[#111] transition-colors">IOx Constraints</a>
                     <a href="#architecture" class="hover:text-[#111] transition-colors">Network Flow</a>
+                    <a href="dda.html" class="flex items-center gap-1.5 text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1 rounded-full transition-colors border border-blue-100">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                        DDA Research
+                    </a>
                 </div>
                 <button class="bg-[#111] text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-[#333] transition-colors">
                     Developer Docs
@@ -992,8 +996,8 @@
                         </div>
                     </div>
                 </div>
-            </div></div>
-            </div>
+
+
 
             <!-- Cisco Strategic Value (CDA Pitch) -->
             <div id="cda" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32 pb-12">
@@ -1058,98 +1062,7 @@
         </main>
 
         
-            <!-- DDA Research & Lab Section -->
-            <div id="dda-lab" class="mt-32 max-w-[1400px] mx-auto px-6 scroll-mt-32 pb-20">
-                <div class="bg-zinc-950 rounded-[32px] p-10 md:p-16 relative overflow-hidden shadow-2xl border border-zinc-800">
-                    <!-- Top Warning Bar -->
-                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-red-500 via-orange-500 to-red-500"></div>
-                    <div class="absolute top-4 right-4 bg-red-500/10 border border-red-500/20 text-red-400 text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></span>
-                        Confidential: Trade Secret
-                    </div>
-
-                    <div class="max-w-4xl relative z-10">
-                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-400 mb-8">
-                            <span class="text-zinc-500">~/research/</span>dda-algorithm.md
-                        </div>
-                        
-                        <h2 class="text-3xl md:text-5xl font-medium tracking-tight text-white mb-6">DivGraph Distribution Algorithm (DDA)</h2>
-                        <p class="text-xl text-zinc-400 font-light leading-relaxed mb-12">
-                            The core mathematical engine that makes divaid.AI possible. DDA is our proprietary approach to mathematically sharding Small Language Models (SLMs) across constrained edge hardware. This section details the live testbed and patentable quantization mechanics.
-                        </p>
-
-                        <!-- Terminal/Code Block Grid -->
-                        <div class="grid lg:grid-cols-2 gap-8">
-                            
-                            <!-- Sharding Math -->
-                            <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[20px] p-8">
-                                <h3 class="text-zinc-100 font-medium mb-4 flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 01-2-2 2 2 0 012-2h2a2 2 0 002-2V5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 002 2h2a2 2 0 012 2 2 2 0 01-2 2h-2a2 2 0 00-2 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                                    Mathematical Sharding (The Secret)
-                                </h3>
-                                <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                                    Unlike standard model parallelization (which requires ultra-fast NVLink), DDA utilizes a <strong>graph-theoretic cut algorithm</strong> targeting the hidden state tensors of transformer blocks.
-                                </p>
-                                <div class="bg-black rounded-lg p-4 font-mono text-[11px] text-zinc-300 leading-relaxed border border-zinc-900">
-                                    <span class="text-emerald-500">def</span> <span class="text-blue-400">shard_model</span>(model_id=<span class="text-yellow-300">'Qwen-2.5-0.5B'</span>, memory_cap_mb=<span class="text-purple-400">100</span>):<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;layers = load_blocks(model_id, precision=<span class="text-yellow-300">'int4_awq'</span>)<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;network_graph = c9300.get_ap_topology()<br>
-                                    <br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-500"># Patentable Step: Tensor-Routing Mapping</span><br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;shards = dda.optimize_cuts(<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;layers=layers,<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_size=memory_cap_mb,<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lan_latency=network_graph.rtt<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;)<br>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-emerald-500">return</span> shards
-                                </div>
-                            </div>
-
-                            <!-- Hardware Testbed -->
-                            <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[20px] p-8">
-                                <h3 class="text-zinc-100 font-medium mb-4 flex items-center gap-2">
-                                    <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                                    Physical Lab Setup
-                                </h3>
-                                <p class="text-zinc-400 text-sm leading-relaxed mb-6">
-                                    The algorithm is actively validated against real-world enterprise infrastructure constraints to guarantee 0% degradation of standard user traffic.
-                                </p>
-                                <ul class="space-y-4 text-sm text-zinc-300">
-                                    <li class="flex items-start gap-3">
-                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
-                                        <div>
-                                            <strong class="text-zinc-100">Orchestrator:</strong> Cisco Catalyst 9300 Series. Running the Master DDA Router in IOx.
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <div class="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0"></div>
-                                        <div>
-                                            <strong class="text-zinc-100">Edge Inference Nodes:</strong> Cisco CW9176I (Wi-Fi 7) Access Points.
-                                        </div>
-                                    </li>
-                                    <li class="flex items-start gap-3">
-                                        <div class="w-1.5 h-1.5 bg-red-500 rounded-full mt-1.5 shrink-0"></div>
-                                        <div>
-                                            <strong class="text-zinc-100">Constraint Parameter:</strong> Strictly &lt; 100MB RAM via Docker <code>cgroups</code> and CPU yield limits.
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- Patentability Analysis -->
-                        <div class="mt-8 bg-[#0D0D11] border border-emerald-900/30 rounded-[20px] p-8">
-                            <h3 class="text-emerald-400 font-medium mb-3">Patentability Strategy (Utility Patent)</h3>
-                            <p class="text-zinc-400 text-sm leading-relaxed">
-                                Software algorithms are historically difficult to patent under pure mathematical grounds. However, DDA is highly defensible as a <strong>Utility Patent</strong> because it ties the mathematical layer-sharding directly to a physical improvement of network hardware topologies. Specifically, patenting <em>"the method of dynamically mapping tensor execution states across standard LAN switching fabric to execute generative inference within explicitly defined hardware memory limits"</em>. The novel integration of AI execution <em>into</em> network switching logic creates a patentable technological improvement.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-<footer class="mt-20 border-t border-gray-200 bg-white py-12">
+            <footer class="mt-20 border-t border-gray-200 bg-white py-12">
             <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <div class="flex items-center gap-2 font-medium text-[#111] mb-4 md:mb-0">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="5" height="5" rx="1" fill="currentColor"></rect><rect x="15" y="4" width="5" height="5" rx="1"></rect><rect x="15" y="15" width="5" height="5" rx="1"></rect><rect x="4" y="15" width="5" height="5" rx="1"></rect><path d="M6.5 9v6"></path><path d="M17.5 9v6"></path><path d="M9 6.5h6"></path><path d="M9 17.5h6"></path><path d="M9 9l6 6"></path></svg>

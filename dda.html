@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DDA Research Lab | divaid.AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap" rel="stylesheet">
+    <script>
+        // Critical Auth Check
+        if (!localStorage.getItem('divaid_token')) {
+            window.location.href = 'index.html';
+        }
+        
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Satoshi', 'sans-serif'], mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'] },
+                    animation: {
+                        'spin-slow': 'spin 8s linear infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #000; color: #fff; font-family: 'Satoshi', sans-serif; selection-background: #3b82f6; selection-color: white; }
+        .glass-nav { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .grid-pattern { background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 32px 32px; }
+        
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #000; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative">
+    
+    <!-- Background grid -->
+    <div class="fixed inset-0 grid-pattern opacity-30 pointer-events-none"></div>
+    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="fixed bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav">
+        <div class="max-w-[1400px] mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="flex items-center gap-2 text-zinc-100">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="5" height="5" rx="1" fill="currentColor"></rect><rect x="15" y="4" width="5" height="5" rx="1"></rect><rect x="15" y="15" width="5" height="5" rx="1"></rect><rect x="4" y="15" width="5" height="5" rx="1"></rect><path d="M6.5 9v6"></path><path d="M17.5 9v6"></path><path d="M9 6.5h6"></path><path d="M9 17.5h6"></path><path d="M9 9l6 6"></path>
+                </svg>
+                <span class="text-xl font-medium tracking-tight">divaid.AI <span class="text-zinc-600 font-light ml-2">| Lab</span></span>
+            </div>
+            <div class="flex items-center space-x-6 text-sm font-medium">
+                <a href="index.html" class="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    Back to Pitch
+                </a>
+                <button onclick="localStorage.removeItem('divaid_token'); window.location.href='index.html';" class="bg-zinc-800 border border-zinc-700 text-zinc-300 px-4 py-1.5 rounded-full hover:bg-zinc-700 transition-colors">
+                    Lock Session
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow pt-32 pb-24 relative z-10">
+        <div class="max-w-[1200px] mx-auto px-6">
+            
+            <!-- Warning Banner -->
+            <div class="mb-12 inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs uppercase font-bold tracking-widest backdrop-blur-sm">
+                <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                Confidential: Patent Pending Trade Secret
+            </div>
+
+            <!-- Header -->
+            <div class="max-w-4xl mb-16">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-400 mb-6 shadow-sm">
+                    <span class="text-zinc-600">~/research/</span>dda-algorithm.md
+                </div>
+                <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">DivGraph Distribution Algorithm</h1>
+                <p class="text-xl text-zinc-400 font-light leading-relaxed">
+                    The core mathematical engine that makes divaid.AI possible. DDA is our proprietary approach to mathematically sharding Small Language Models (SLMs) across constrained edge hardware. This document details the live testbed, quantization mechanics, and patentability strategy.
+                </p>
+            </div>
+
+            <!-- Sections Grid -->
+            <div class="grid lg:grid-cols-12 gap-8">
+                
+                <!-- Left Column (Math & Sharding) -->
+                <div class="lg:col-span-7 space-y-8">
+                    <!-- Sharding Math -->
+                    <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[24px] p-8 md:p-10 shadow-2xl relative overflow-hidden group hover:border-zinc-700 transition-colors">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+                        <h3 class="text-xl text-white font-medium mb-4 flex items-center gap-3">
+                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 01-2-2 2 2 0 012-2h2a2 2 0 002-2V5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 002 2h2a2 2 0 012 2 2 2 0 01-2 2h-2a2 2 0 00-2 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            Mathematical Sharding (The Secret)
+                        </h3>
+                        <p class="text-zinc-400 leading-relaxed mb-8">
+                            Unlike standard model parallelization (which requires ultra-fast PCIe/NVLink interconnects), DDA utilizes a <strong>graph-theoretic cut algorithm</strong> targeting the hidden state tensors of transformer blocks. We map the computational graph of the model directly onto the physical spanning tree topology of the LAN.
+                        </p>
+                        <div class="bg-[#050505] rounded-xl p-6 font-mono text-[13px] text-zinc-300 leading-loose border border-zinc-900 overflow-x-auto shadow-inner">
+                            <div class="flex items-center gap-2 mb-4 border-b border-zinc-800 pb-2">
+                                <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
+                                <span class="text-zinc-600 text-[10px] ml-2">dda_core.py</span>
+                            </div>
+                            <span class="text-emerald-500">def</span> <span class="text-blue-400">shard_model_to_edge</span>(model_id=<span class="text-yellow-300">'Qwen-2.5-0.5B'</span>, memory_cap_mb=<span class="text-purple-400">100</span>):<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># 1. Load transformer blocks into RAM with aggressive AWQ</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;layers = load_blocks(model_id, precision=<span class="text-yellow-300">'int4_awq'</span>)<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># 2. Extract live network graph from Cisco Switch (C9300)</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;network_graph = cisco_iox.get_active_topology()<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># 3. Patentable Step: Tensor-Routing Optimization</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># Slices the model where interconnect bandwidth penalty is lowest</span><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;optimal_cuts = dda.compute_min_cut(<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;computational_graph=layers,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_node_memory=memory_cap_mb,<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge_latency=network_graph.rtt_matrix<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;)<br>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-emerald-500">return</span> dda.deploy_to_cgroups(optimal_cuts)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Hardware & Legal) -->
+                <div class="lg:col-span-5 space-y-8">
+                    
+                    <!-- Hardware Testbed -->
+                    <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[24px] p-8 md:p-10 shadow-2xl">
+                        <h3 class="text-xl text-white font-medium mb-6 flex items-center gap-3">
+                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            Hardware Testbed Setup
+                        </h3>
+                        <p class="text-zinc-400 leading-relaxed mb-8">
+                            The algorithm is actively validated against real-world enterprise infrastructure constraints to guarantee 0% degradation of standard user Wi-Fi traffic.
+                        </p>
+                        
+                        <div class="space-y-6 relative before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-zinc-800">
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-zinc-900 border-2 border-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(59,130,246,0.3)]">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                                </div>
+                                <h4 class="text-zinc-200 font-medium mb-1">Cisco Catalyst 9300 Series</h4>
+                                <p class="text-sm text-zinc-500">Acts as the Master Orchestrator running the IOx Host App. Manages routing of the SLM generation loop.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-zinc-900 border-2 border-purple-500 flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)]">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                                </div>
+                                <h4 class="text-zinc-200 font-medium mb-1">Cisco CW9176I (Wi-Fi 7) APs</h4>
+                                <p class="text-sm text-zinc-500">The Edge Inference Nodes. Each AP handles precisely 10-20% of the transformer layers.</p>
+                            </div>
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-zinc-900 border-2 border-red-500 flex items-center justify-center shadow-[0_0_10px_rgba(239,68,68,0.3)]">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
+                                </div>
+                                <h4 class="text-zinc-200 font-medium mb-1">Strict Resource Capping</h4>
+                                <p class="text-sm text-zinc-500">Hard limit of &lt; 100MB RAM per AP via Docker <code>cgroups</code> and maximum CPU yield limits to protect network integrity.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Patentability Analysis -->
+                    <div class="bg-emerald-950/20 border border-emerald-900/40 rounded-[24px] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-colors"></div>
+                        <h3 class="text-emerald-400 font-medium mb-4 flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            Patentability Strategy (Utility Patent)
+                        </h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">
+                            Software algorithms are historically difficult to patent under pure mathematical grounds. However, DDA is highly defensible as a <strong>Utility Patent</strong> because it ties the mathematical layer-sharding directly to a physical improvement of network hardware topologies.
+                        </p>
+                        <div class="p-4 bg-emerald-950/30 rounded-xl border border-emerald-900/30 text-emerald-200/80 text-sm italic">
+                            "The method of dynamically mapping tensor execution states across standard LAN switching fabric to execute generative inference within explicitly defined physical hardware memory limits."
+                        </div>
+                        <p class="text-zinc-400 text-sm leading-relaxed mt-4">
+                            The novel integration of AI execution <em>into</em> network switching logic creates a patentable technological improvement to physical network appliances.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="border-t border-zinc-800/50 bg-zinc-950 py-10 relative z-10">
+        <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-600">
+            <div class="flex items-center gap-2 font-medium text-zinc-300 mb-4 md:mb-0">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="5" height="5" rx="1" fill="currentColor"></rect><rect x="15" y="4" width="5" height="5" rx="1"></rect><rect x="15" y="15" width="5" height="5" rx="1"></rect><rect x="4" y="15" width="5" height="5" rx="1"></rect><path d="M6.5 9v6"></path><path d="M17.5 9v6"></path><path d="M9 6.5h6"></path><path d="M9 17.5h6"></path><path d="M9 9l6 6"></path></svg>
+                divaid.AI
+            </div>
+            <p>Confidential Research Annex. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
