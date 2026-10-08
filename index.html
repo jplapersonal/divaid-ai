@@ -575,34 +575,34 @@
                     <p class="text-xl text-zinc-500 font-light leading-relaxed mt-4">
                         <strong class="font-medium text-zinc-900">Zero Wi-Fi Disruption:</strong> Thanks to strict IOx <code>cgroup</code> isolation, the Access Points seamlessly process massive background AI inferences while continuously serving high-performance Wi-Fi to connected laptops and mobile devices.
                     </p>
-                    <div class="mt-10 p-8 bg-white border border-zinc-200 rounded-3xl shadow-sm">
-                        <h3 class="text-[#111] font-medium mb-6 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            The Hidden Supercomputer: On-Premise vs. Cloud GPU
-                        </h3>
-                        <div class="grid md:grid-cols-3 gap-8">
-                            <div class="relative">
-                                <div class="text-3xl font-medium tracking-tight text-[#111]">100GB+</div>
-                                <div class="text-sm font-medium text-zinc-900 mt-1">Distributed Tensor RAM</div>
-                                <p class="text-sm text-zinc-500 mt-2 leading-relaxed">Aggregating just 100MB per AP across a 1,000-node campus yields over 100GB of working memory—surpassing the 80GB VRAM of a dedicated <strong>$15,000 NVIDIA A100 GPU</strong>.</p>
-                            </div>
-                            <div class="relative before:absolute before:inset-y-0 before:-left-4 before:w-px before:bg-zinc-100 hidden md:block"></div>
-                            <div class="relative">
-                                <div class="text-3xl font-medium tracking-tight text-[#111]">4,000+</div>
-                                <div class="text-sm font-medium text-zinc-900 mt-1">Parallel ARM Cores</div>
-                                <p class="text-sm text-zinc-500 mt-2 leading-relaxed">Instead of renting an expensive AWS <code>p4d.24xlarge</code> instance at $32/hour, DDA awakens the massive, dormant multicore compute power already hanging from your ceilings.</p>
-                            </div>
-                            <div class="relative before:absolute before:inset-y-0 before:-left-4 before:w-px before:bg-zinc-100 hidden md:block"></div>
-                            <div class="relative">
-                                <div class="text-3xl font-medium tracking-tight text-emerald-600">100%</div>
-                                <div class="text-sm font-medium text-zinc-900 mt-1">Sovereign & Private</div>
-                                <p class="text-sm text-zinc-500 mt-2 leading-relaxed">Zero cloud API calls. By processing entirely in-house, your highly sensitive corporate IP never leaves the firewall, completely eliminating third-party data leaks.</p>
-                            </div>
+                </div>
+
+                <!-- Supercomputer Metric Box -->
+                <div class="mb-12 p-8 bg-white border border-zinc-200 rounded-3xl shadow-sm">
+                    <h3 class="text-[#111] font-medium mb-6 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        The Hidden Supercomputer: On-Premise vs. Cloud GPU
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-8 md:gap-12 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
+                        <div class="pt-6 md:pt-0">
+                            <div class="text-4xl font-medium tracking-tight text-[#111]">100GB+</div>
+                            <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Distributed Tensor RAM</div>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Aggregating just 100MB per AP across a 1,000-node campus yields over 100GB of working memory—surpassing the 80GB VRAM of a dedicated <strong>$15,000 NVIDIA A100 GPU</strong>.</p>
+                        </div>
+                        <div class="pt-6 md:pt-0 md:pl-12">
+                            <div class="text-4xl font-medium tracking-tight text-[#111]">4,000+</div>
+                            <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Parallel ARM Cores</div>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Instead of renting an expensive AWS <code>p4d.24xlarge</code> instance at $32/hour, DDA awakens the massive, dormant multicore compute power already hanging from your ceilings.</p>
+                        </div>
+                        <div class="pt-6 md:pt-0 md:pl-12">
+                            <div class="text-4xl font-medium tracking-tight text-emerald-600">100%</div>
+                            <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Sovereign & Private</div>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Zero cloud API calls. By processing entirely in-house, your highly sensitive corporate IP never leaves the firewall, completely eliminating third-party data leaks.</p>
                         </div>
                     </div>
                 </div>
 
-                                <div class="grid lg:grid-cols-12 gap-6 items-stretch">
+                <div class="grid lg:grid-cols-12 gap-6 items-stretch">
                     <!-- Sharding Ingestion Panel -->
                     <div class="lg:col-span-3 bg-white border border-zinc-200 rounded-[32px] p-8 flex flex-col items-center justify-center relative shadow-sm text-center">
                         <div class="text-xs text-zinc-400 font-bold tracking-widest uppercase mb-8">DivGraph Ingestion</div>
