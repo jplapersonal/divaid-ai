@@ -637,11 +637,6 @@
                                     .pulse-emerald { stroke: #10b981; filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.8)); animation: computeMarquee 0.8s linear infinite; }
                                     .pulse-amber { stroke: #f59e0b; filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8)); animation: computeMarquee 1.1s linear infinite; }
                                     .pulse-rose { stroke: #f43f5e; filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.8)); animation: computeMarquee 0.9s linear infinite; }
-
-                                    .std-traffic { stroke-dasharray: 2 6; stroke-linecap: round; animation: dashStd 2s linear infinite; }
-                                    .std-traffic-rev { stroke-dasharray: 2 6; stroke-linecap: round; animation: dashStdRev 2s linear infinite; }
-                                    @keyframes dashStd { to { stroke-dashoffset: -32; } }
-                                    @keyframes dashStdRev { to { stroke-dashoffset: 32; } }
                                     .wifi-wave-1 { animation: wifiPulse 2s infinite; opacity: 0; }
                                     .wifi-wave-2 { animation: wifiPulse 2s infinite; animation-delay: 0.3s; opacity: 0; }
                                     .wifi-wave-3 { animation: wifiPulse 2s infinite; animation-delay: 0.6s; opacity: 0; }
@@ -701,22 +696,28 @@
                             <use href="#catalyst-dark" x="500" y="400" />
                             <text x="500" y="440" fill="#a1a1aa" font-size="12" font-family="sans-serif" font-weight="600" letter-spacing="1" text-anchor="middle">C9300 ORCHESTRATOR</text>
 
-                            <!-- Standard Traffic Flow (Guest Wi-Fi to Internet) -->
-                            <!-- Laptop to AP -->
-                            <path d="M 500 105 L 500 180" fill="none" stroke="#71717a" stroke-width="2" class="std-traffic" opacity="0.8"/>
-                            <path d="M 510 180 L 510 105" fill="none" stroke="#52525b" stroke-width="2" class="std-traffic-rev" opacity="0.5"/>
-                            
-                            <!-- AP to Switch -->
-                            <path d="M 520 220 L 520 400" fill="none" stroke="#71717a" stroke-width="2" class="std-traffic" opacity="0.8"/>
-                            <path d="M 525 400 L 525 220" fill="none" stroke="#52525b" stroke-width="2" class="std-traffic-rev" opacity="0.5"/>
-                            
-                            <!-- Switch to Router -->
-                            <path d="M 520 400 L 560 400 L 704 400" fill="none" stroke="#71717a" stroke-width="2" class="std-traffic" opacity="0.8"/>
-                            <path d="M 704 405 L 560 405 L 525 405" fill="none" stroke="#52525b" stroke-width="2" class="std-traffic-rev" opacity="0.5"/>
-                            
-                            <!-- Router to Internet -->
-                            <path d="M 736 400 L 860 400" fill="none" stroke="#71717a" stroke-width="2" class="std-traffic" opacity="0.8"/>
-                            <path d="M 860 405 L 736 405" fill="none" stroke="#52525b" stroke-width="2" class="std-traffic-rev" opacity="0.5"/>
+                            <!-- Standard Traffic Flow (YouTube Request) -->
+                            <!-- Base paths for the YouTube flow -->
+                            <path id="yt-path-out" d="M 500,105 L 500,180 L 520,220 L 520,400 L 860,400" fill="none" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.5"/>
+                            <path id="yt-path-in" d="M 860,405 L 525,405 L 525,220 L 510,180 L 510,105" fill="none" stroke="#3f3f46" stroke-width="1.5" stroke-dasharray="2 4" opacity="0.5"/>
+
+                            <!-- YouTube Request (Outbound) -->
+                            <g>
+                                <rect x="-8" y="-6" width="16" height="12" rx="3" fill="#ff0000" />
+                                <polygon points="-2,-3 4,0 -2,3" fill="#ffffff" />
+                                <animateMotion dur="3.5s" repeatCount="indefinite">
+                                    <mpath href="#yt-path-out" />
+                                </animateMotion>
+                            </g>
+
+                            <!-- YouTube Stream (Inbound) -->
+                            <g>
+                                <rect x="-8" y="-6" width="16" height="12" rx="3" fill="#ff0000" />
+                                <polygon points="-2,-3 4,0 -2,3" fill="#ffffff" />
+                                <animateMotion dur="3.5s" begin="1.75s" repeatCount="indefinite">
+                                    <mpath href="#yt-path-in" />
+                                </animateMotion>
+                            </g>
                             
                             <!-- Router & Internet Nodes -->
                             <use href="#router" x="720" y="400" />
