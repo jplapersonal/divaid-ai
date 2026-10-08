@@ -925,7 +925,84 @@
                 </div>
             </div>
 
-            <!-- CDA Strategic Verticals Section -->
+            
+            <!-- Hardware Isolation Deep Dive -->
+            <div id="hardware-isolation" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Left: Explanation -->
+                    <div class="max-w-xl">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs font-medium tracking-wide text-blue-600 mb-6 shadow-sm">
+                            <span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span>
+                            The Magic Inside
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Hardware-Level Isolation.</h2>
+                        <p class="text-lg text-zinc-500 font-light leading-relaxed mb-8">
+                            How do we run Generative AI on an Access Point without destroying Wi-Fi performance? By leveraging the Cisco IOx architecture to create a strict, hardware-enforced sandbox.
+                        </p>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-zinc-200 shadow-sm">
+                                <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center shrink-0 text-zinc-600">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0"></path></svg>
+                                </div>
+                                <div>
+                                    <h4 class="text-[#111] font-medium mb-1">90% Dedicated to Wi-Fi 7</h4>
+                                    <p class="text-sm text-zinc-500 leading-relaxed">The vast majority of the AP's CPU, RAM, and NPU are completely untouched. Core network services have absolute priority at the hypervisor level.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-2xl bg-emerald-50 border border-emerald-100 shadow-sm relative overflow-hidden">
+                                <div class="absolute right-0 top-0 w-24 h-24 bg-emerald-500/10 rounded-full blur-2xl"></div>
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-600 relative z-10">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                                </div>
+                                <div class="relative z-10">
+                                    <h4 class="text-emerald-900 font-medium mb-1">10% divaid.AI Sandbox</h4>
+                                    <p class="text-sm text-emerald-700/80 leading-relaxed">We deploy the DDA Worker node via Docker <code>cgroups</code>. It is mathematically bounded to never exceed 100MB of RAM or interrupt network thread execution.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Visual AP Breakdown -->
+                    <div class="relative w-full max-w-lg mx-auto">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+                        
+                        <div class="relative z-10 p-8 flex items-center justify-center">
+                            <img src="assets/cw917x.png" alt="Cisco CW917X Access Point" class="w-full max-w-[320px] h-auto drop-shadow-2xl relative z-10" style="mix-blend-mode: multiply;">
+                            
+                            <!-- SVG Overlay for targeting -->
+                            <svg class="absolute inset-0 w-full h-full z-20 pointer-events-none" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
+                                <!-- Core Network Area (Large bounding box) -->
+                                <rect x="90" y="100" width="220" height="200" rx="20" fill="rgba(59,130,246,0.05)" stroke="rgba(59,130,246,0.5)" stroke-width="1.5" stroke-dasharray="4" class="animate-[pulse_3s_ease-in-out_infinite]" />
+                                <text x="200" y="85" text-anchor="middle" class="text-[10px] font-mono fill-blue-500 uppercase tracking-widest font-bold">Enterprise Network Core</text>
+
+                                <!-- AI Sandbox Area (Small bounding box on bottom right) -->
+                                <rect x="230" y="220" width="70" height="70" rx="10" fill="rgba(16,185,129,0.15)" stroke="#10b981" stroke-width="2" class="animate-pulse" />
+                                
+                                <!-- Connecting Line -->
+                                <path d="M 300 255 L 340 255 L 360 235" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3" />
+                                <circle cx="360" cy="235" r="3" fill="#10b981" />
+                            </svg>
+                            
+                            <!-- HTML Label for Sandbox -->
+                            <div class="absolute right-[-1rem] md:right-[-3rem] top-[10rem] z-30 pointer-events-none">
+                                <div class="bg-emerald-950 border border-emerald-500/50 text-emerald-400 text-[10px] uppercase font-bold tracking-widest px-3 py-1.5 rounded shadow-[0_0_15px_rgba(16,185,129,0.3)] flex flex-col gap-1">
+                                    <div class="flex items-center gap-1.5">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
+                                        IOx Sandbox
+                                    </div>
+                                    <span class="text-emerald-500/70 text-[9px] font-mono">&lt; 100MB RAM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+<!-- CDA Strategic Verticals Section -->
             <div id="verticals" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
                 <div class="mb-12 max-w-3xl">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-medium tracking-wide text-zinc-600 mb-6 shadow-sm">
