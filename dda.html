@@ -130,38 +130,48 @@
                 <!-- Right Column (Hardware & Legal) -->
                 <div class="lg:col-span-5 space-y-8">
                     
-                    <!-- Hardware Testbed -->
+                    <!-- Hardware Testbed & Compatibility -->
                     <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[24px] p-8 md:p-10 shadow-2xl">
                         <h3 class="text-xl text-white font-medium mb-6 flex items-center gap-3">
                             <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                            Hardware Testbed Setup
+                            IOx App Hosting Matrix
                         </h3>
-                        <p class="text-zinc-400 leading-relaxed mb-8">
-                            The algorithm is actively validated against real-world enterprise infrastructure constraints to guarantee 0% degradation of standard user Wi-Fi traffic.
+                        <p class="text-zinc-400 leading-relaxed mb-6">
+                            The algorithm strictly targets enterprise infrastructure with native <strong>Cisco IOx (Docker) Application Hosting</strong> capabilities to guarantee hardware-level isolation.
                         </p>
                         
-                        <div class="space-y-6 relative before:absolute before:inset-y-0 before:left-[11px] before:w-px before:bg-zinc-800">
-                            <div class="relative pl-8">
-                                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-zinc-900 border-2 border-blue-500 flex items-center justify-center shadow-[0_0_10px_rgba(59,130,246,0.3)]">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                        <div class="space-y-8">
+                            <!-- Orchestrators -->
+                            <div>
+                                <h4 class="text-zinc-100 font-medium mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                    Master Orchestrators (Switches)
+                                </h4>
+                                <div class="bg-black/50 border border-zinc-800/50 rounded-lg p-4">
+                                    <p class="text-sm text-zinc-400 mb-2">Requires an internal SSD (e.g., SSD-120G or USB 3.0) for IOx container storage.</p>
+                                    <ul class="text-sm text-zinc-300 space-y-2 font-mono">
+                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2"><span>Catalyst 9300 / 9300X Series</span> <span class="text-blue-400">Up to 2GB RAM for IOx</span></li>
+                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2 pt-1"><span>Catalyst 9400 Series</span> <span class="text-blue-400">Up to 2GB RAM for IOx</span></li>
+                                    </ul>
                                 </div>
-                                <h4 class="text-zinc-200 font-medium mb-1">Cisco Catalyst 9300 Series</h4>
-                                <p class="text-sm text-zinc-500">Acts as the Master Orchestrator running the IOx Host App. Manages routing of the SLM generation loop.</p>
                             </div>
-                            <div class="relative pl-8">
-                                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-zinc-900 border-2 border-purple-500 flex items-center justify-center shadow-[0_0_10px_rgba(168,85,247,0.3)]">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-purple-500"></div>
+                            
+                            <!-- Worker Nodes -->
+                            <div>
+                                <h4 class="text-zinc-100 font-medium mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
+                                    Worker Nodes (Access Points)
+                                </h4>
+                                <div class="bg-black/50 border border-zinc-800/50 rounded-lg p-4">
+                                    <p class="text-sm text-zinc-400 mb-2">The Edge Inference Nodes running mathematical shards. Strictly bounded by <code>cgroups</code>.</p>
+                                    <ul class="text-sm text-zinc-300 space-y-2 font-mono">
+                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2"><span>CW9176I / CW9174I (Wi-Fi 7)</span> <span class="text-red-400">100MB RAM Limit</span></li>
+                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2 pt-1"><span>Catalyst 9130 / 9136 Series</span> <span class="text-red-400">100MB RAM Limit</span></li>
+                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2 pt-1"><span>Catalyst 9120 Series</span> <span class="text-red-400">64MB RAM Limit</span></li>
+                                    </ul>
                                 </div>
-                                <h4 class="text-zinc-200 font-medium mb-1">Cisco CW9176I (Wi-Fi 7) APs</h4>
-                                <p class="text-sm text-zinc-500">The Edge Inference Nodes. Each AP handles precisely 10-20% of the transformer layers.</p>
                             </div>
-                            <div class="relative pl-8">
-                                <div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-zinc-900 border-2 border-red-500 flex items-center justify-center shadow-[0_0_10px_rgba(239,68,68,0.3)]">
-                                    <div class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-                                </div>
-                                <h4 class="text-zinc-200 font-medium mb-1">Strict Resource Capping</h4>
-                                <p class="text-sm text-zinc-500">Hard limit of &lt; 100MB RAM per AP via Docker <code>cgroups</code> and maximum CPU yield limits to protect network integrity.</p>
-                            </div>
+                            
                         </div>
                     </div>
 
