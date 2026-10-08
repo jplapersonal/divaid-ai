@@ -638,10 +638,10 @@
                                     .pulse-amber { stroke: #f59e0b; filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8)); animation: computeMarquee 1.1s linear infinite; }
                                     .pulse-rose { stroke: #f43f5e; filter: drop-shadow(0 0 8px rgba(244, 63, 94, 0.8)); animation: computeMarquee 0.9s linear infinite; }
 
-                                    .std-traffic { stroke-dasharray: 4 6; animation: dashStd 2s linear infinite; }
-                                    .std-traffic-rev { stroke-dasharray: 4 6; animation: dashStdRev 2s linear infinite; }
-                                    @keyframes dashStd { to { stroke-dashoffset: -20; } }
-                                    @keyframes dashStdRev { to { stroke-dashoffset: 20; } }
+                                    .std-traffic { stroke-dasharray: 0.1 7; stroke-linecap: round; animation: dashStd 2s linear infinite; }
+                                    .std-traffic-rev { stroke-dasharray: 0.1 7; stroke-linecap: round; animation: dashStdRev 2s linear infinite; }
+                                    @keyframes dashStd { to { stroke-dashoffset: -28.4; } }
+                                    @keyframes dashStdRev { to { stroke-dashoffset: 28.4; } }
                                     .wifi-wave-1 { animation: wifiPulse 2s infinite; opacity: 0; }
                                     .wifi-wave-2 { animation: wifiPulse 2s infinite; animation-delay: 0.3s; opacity: 0; }
                                     .wifi-wave-3 { animation: wifiPulse 2s infinite; animation-delay: 0.6s; opacity: 0; }
