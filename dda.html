@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DDA Research Lab | divaid.AI</title>
+    <title>DDA Research Paper | divaid.AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap" rel="stylesheet">
+    <!-- MathJax for rendering mathematical formulas like a real scientific paper -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>
         // Critical Auth Check
         if (!localStorage.getItem('divaid_token')) {
@@ -15,49 +18,43 @@
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Satoshi', 'sans-serif'], mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'] },
-                    animation: {
-                        'spin-slow': 'spin 8s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
+                    fontFamily: { 
+                        sans: ['Satoshi', 'sans-serif'], 
+                        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+                        serif: ['ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif']
+                    },
                 }
             }
         }
     </script>
     <style>
-        body { background-color: #000; color: #fff; font-family: 'Satoshi', sans-serif; selection-background: #3b82f6; selection-color: white; }
-        .glass-nav { background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .grid-pattern { background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px); background-size: 32px 32px; }
+        body { background-color: #FAFAFA; color: #111; font-family: 'Satoshi', sans-serif; }
+        .glass-nav { background: rgba(250, 250, 250, 0.9); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .paper-content h1, .paper-content h2, .paper-content h3 { font-family: 'Satoshi', sans-serif; letter-spacing: -0.02em; }
+        .paper-content p { font-family: 'ui-serif', 'Georgia', serif; font-size: 1.125rem; line-height: 1.8; color: #333; margin-bottom: 1.5rem; }
+        .paper-content .abstract { font-family: 'Satoshi', sans-serif; font-size: 1.05rem; font-weight: 500; background: #fff; padding: 2rem; border-left: 4px solid #111; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
         
-        /* Smooth Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        /* Math formatting */
+        .math-block { overflow-x: auto; margin: 2rem 0; padding: 1rem 0; }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col relative">
+<body class="antialiased min-h-screen flex flex-col relative selection:bg-blue-200 selection:text-blue-900">
     
-    <!-- Background grid -->
-    <div class="fixed inset-0 grid-pattern opacity-30 pointer-events-none"></div>
-    <div class="fixed top-[-20%] left-[-10%] w-[50%] h-[50%] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="fixed bottom-[-20%] right-[-10%] w-[40%] h-[40%] bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"></div>
-
     <!-- Navigation -->
     <nav class="fixed w-full z-50 glass-nav">
         <div class="max-w-[1400px] mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="flex items-center gap-2 text-zinc-100">
+            <div class="flex items-center gap-2 text-[#111]">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="4" y="4" width="5" height="5" rx="1" fill="currentColor"></rect><rect x="15" y="4" width="5" height="5" rx="1"></rect><rect x="15" y="15" width="5" height="5" rx="1"></rect><rect x="4" y="15" width="5" height="5" rx="1"></rect><path d="M6.5 9v6"></path><path d="M17.5 9v6"></path><path d="M9 6.5h6"></path><path d="M9 17.5h6"></path><path d="M9 9l6 6"></path>
                 </svg>
-                <span class="text-xl font-medium tracking-tight">divaid.AI <span class="text-zinc-600 font-light ml-2">| Lab</span></span>
+                <span class="text-xl font-medium tracking-tight">divaid.AI <span class="text-zinc-400 font-light ml-2">| Research</span></span>
             </div>
             <div class="flex items-center space-x-6 text-sm font-medium">
-                <a href="index.html" class="flex items-center gap-2 text-zinc-400 hover:text-white transition-colors">
+                <a href="index.html" class="flex items-center gap-2 text-zinc-500 hover:text-[#111] transition-colors">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     Back to Pitch
                 </a>
-                <button onclick="localStorage.removeItem('divaid_token'); window.location.href='index.html';" class="bg-zinc-800 border border-zinc-700 text-zinc-300 px-4 py-1.5 rounded-full hover:bg-zinc-700 transition-colors">
+                <button onclick="localStorage.removeItem('divaid_token'); window.location.href='index.html';" class="bg-[#111] text-white px-4 py-1.5 rounded-full hover:bg-[#333] transition-colors shadow-sm">
                     Lock Session
                 </button>
             </div>
@@ -66,147 +63,150 @@
 
     <!-- Main Content -->
     <main class="flex-grow pt-32 pb-24 relative z-10">
-        <div class="max-w-[1200px] mx-auto px-6">
+        <div class="max-w-[800px] mx-auto px-6 paper-content">
             
             <!-- Warning Banner -->
-            <div class="mb-12 inline-flex items-center gap-3 px-4 py-2 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-xs uppercase font-bold tracking-widest backdrop-blur-sm">
+            <div class="mb-8 inline-flex items-center gap-3 px-4 py-2 rounded bg-red-50 border border-red-100 text-red-600 text-xs uppercase font-bold tracking-widest">
                 <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                 Confidential: Patent Pending Trade Secret
             </div>
 
-            <!-- Header -->
-            <div class="max-w-4xl mb-16">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-400 mb-6 shadow-sm">
-                    <span class="text-zinc-600">~/research/</span>dda-algorithm.md
-                </div>
-                <h1 class="text-4xl md:text-6xl font-medium tracking-tight text-white mb-6">DivGraph Distribution Algorithm</h1>
-                <p class="text-xl text-zinc-400 font-light leading-relaxed">
-                    The core mathematical engine that makes divaid.AI possible. DDA is our proprietary approach to mathematically sharding Small Language Models (SLMs) across constrained edge hardware. This document details the live testbed, quantization mechanics, and patentability strategy.
-                </p>
-            </div>
-
-            <!-- Sections Grid -->
-            <div class="grid lg:grid-cols-12 gap-8">
+            <!-- Paper Header -->
+            <header class="mb-12 border-b border-zinc-200 pb-10">
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-[#111] mb-6 leading-tight">DivGraph Distribution Algorithm (DDA): <br><span class="text-zinc-400 font-medium text-3xl">A Graph-Theoretic Approach to Sub-1B LLM Sharding on Constrained Edge Infrastructure</span></h1>
                 
-                <!-- Left Column (Math & Sharding) -->
-                <div class="lg:col-span-7 space-y-8">
-                    <!-- Sharding Math -->
-                    <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[24px] p-8 md:p-10 shadow-2xl relative overflow-hidden group hover:border-zinc-700 transition-colors">
-                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 to-blue-500"></div>
-                        <h3 class="text-xl text-white font-medium mb-4 flex items-center gap-3">
-                            <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 01-2-2 2 2 0 012-2h2a2 2 0 002-2V5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 002 2h2a2 2 0 012 2 2 2 0 01-2 2h-2a2 2 0 00-2 2v6a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                            Mathematical Sharding (The Secret)
-                        </h3>
-                        <p class="text-zinc-400 leading-relaxed mb-8">
-                            Unlike standard model parallelization (which requires ultra-fast PCIe/NVLink interconnects), DDA utilizes a <strong>graph-theoretic cut algorithm</strong> targeting the hidden state tensors of transformer blocks. We map the computational graph of the model directly onto the physical spanning tree topology of the LAN.
-                        </p>
-                        <div class="bg-[#050505] rounded-xl p-6 font-mono text-[13px] text-zinc-300 leading-loose border border-zinc-900 overflow-x-auto shadow-inner">
-                            <div class="flex items-center gap-2 mb-4 border-b border-zinc-800 pb-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500/20 border border-red-500/50"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50"></div>
-                                <span class="text-zinc-600 text-[10px] ml-2">dda_core.py</span>
-                            </div>
-                            <span class="text-emerald-500">def</span> <span class="text-blue-400">shard_model_to_edge</span>(model_id=<span class="text-yellow-300">'Qwen-2.5-0.5B'</span>, memory_cap_mb=<span class="text-purple-400">100</span>):<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># 1. Load transformer blocks into RAM with aggressive AWQ</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;layers = load_blocks(model_id, precision=<span class="text-yellow-300">'int4_awq'</span>)<br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># 2. Extract live network graph from Cisco Switch (C9300)</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;network_graph = cisco_iox.get_active_topology()<br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># 3. Patentable Step: Tensor-Routing Optimization</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-zinc-600"># Slices the model where interconnect bandwidth penalty is lowest</span><br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;optimal_cuts = dda.compute_min_cut(<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;computational_graph=layers,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;max_node_memory=memory_cap_mb,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edge_latency=network_graph.rtt_matrix<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;)<br>
-                            <br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-emerald-500">return</span> dda.deploy_to_cgroups(optimal_cuts)
-                        </div>
+                <div class="flex flex-wrap items-center gap-x-8 gap-y-4 text-zinc-600 font-sans text-sm">
+                    <div>
+                        <strong>Authors:</strong> divaid.AI Research Group
+                    </div>
+                    <div>
+                        <strong>Status:</strong> Draft & PoC Implementation
+                    </div>
+                    <div>
+                        <strong>Target Hardware:</strong> Cisco Catalyst 9000 Series & Wi-Fi 7 Access Points
                     </div>
                 </div>
+            </header>
 
-                <!-- Right Column (Hardware & Legal) -->
-                <div class="lg:col-span-5 space-y-8">
-                    
-                    <!-- Hardware Testbed & Compatibility -->
-                    <div class="bg-[#0D0D11] border border-zinc-800/50 rounded-[24px] p-8 md:p-10 shadow-2xl">
-                        <h3 class="text-xl text-white font-medium mb-6 flex items-center gap-3">
-                            <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                            IOx App Hosting Matrix
-                        </h3>
-                        <p class="text-zinc-400 leading-relaxed mb-6">
-                            The algorithm strictly targets enterprise infrastructure with native <strong>Cisco IOx (Docker) Application Hosting</strong> capabilities to guarantee hardware-level isolation.
-                        </p>
-                        
-                        <div class="space-y-8">
-                            <!-- Orchestrators -->
-                            <div>
-                                <h4 class="text-zinc-100 font-medium mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-                                    Master Orchestrators (Switches)
-                                </h4>
-                                <div class="bg-black/50 border border-zinc-800/50 rounded-lg p-4">
-                                    <p class="text-sm text-zinc-400 mb-2">Requires an internal SSD (e.g., SSD-120G or USB 3.0) for IOx container storage.</p>
-                                    <ul class="text-sm text-zinc-300 space-y-2 font-mono">
-                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2"><span>Catalyst 9300 / 9300X Series</span> <span class="text-blue-400">Up to 2GB RAM for IOx</span></li>
-                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2 pt-1"><span>Catalyst 9400 Series</span> <span class="text-blue-400">Up to 2GB RAM for IOx</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                            <!-- Worker Nodes -->
-                            <div>
-                                <h4 class="text-zinc-100 font-medium mb-3 flex items-center gap-2 text-sm uppercase tracking-wide">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span>
-                                    Worker Nodes (Access Points)
-                                </h4>
-                                <div class="bg-black/50 border border-zinc-800/50 rounded-lg p-4">
-                                    <p class="text-sm text-zinc-400 mb-2">The Edge Inference Nodes running mathematical shards. Strictly bounded by <code>cgroups</code>.</p>
-                                    <ul class="text-sm text-zinc-300 space-y-2 font-mono">
-                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2"><span>CW9176I / CW9174I (Wi-Fi 7)</span> <span class="text-red-400">100MB RAM Limit</span></li>
-                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2 pt-1"><span>Catalyst 9130 / 9136 Series</span> <span class="text-red-400">100MB RAM Limit</span></li>
-                                        <li class="flex justify-between border-b border-zinc-800/50 pb-2 pt-1"><span>Catalyst 9120 Series</span> <span class="text-red-400">64MB RAM Limit</span></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-
-                    <!-- Patentability Analysis -->
-                    <div class="bg-emerald-950/20 border border-emerald-900/40 rounded-[24px] p-8 md:p-10 shadow-2xl relative overflow-hidden group">
-                        <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl group-hover:bg-emerald-500/20 transition-colors"></div>
-                        <h3 class="text-emerald-400 font-medium mb-4 flex items-center gap-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                            Patentability Strategy (Utility Patent)
-                        </h3>
-                        <p class="text-zinc-400 text-sm leading-relaxed mb-4">
-                            Software algorithms are historically difficult to patent under pure mathematical grounds. However, DDA is highly defensible as a <strong>Utility Patent</strong> because it ties the mathematical layer-sharding directly to a physical improvement of network hardware topologies.
-                        </p>
-                        <div class="p-4 bg-emerald-950/30 rounded-xl border border-emerald-900/30 text-emerald-200/80 text-sm italic">
-                            "The method of dynamically mapping tensor execution states across standard LAN switching fabric to execute generative inference within explicitly defined physical hardware memory limits."
-                        </div>
-                        <p class="text-zinc-400 text-sm leading-relaxed mt-4">
-                            The novel integration of AI execution <em>into</em> network switching logic creates a patentable technological improvement to physical network appliances.
-                        </p>
-                    </div>
-
-                </div>
+            <!-- Abstract -->
+            <div class="abstract mb-16">
+                <h3 class="text-sm font-bold uppercase tracking-widest text-zinc-400 mb-4">Abstract</h3>
+                The deployment of Generative AI (GenAI) in highly regulated enterprise environments is heavily constrained by data sovereignty laws and the prohibitive cost of on-premise GPU clusters. In this paper, we present the DivGraph Distribution Algorithm (DDA), a novel orchestration methodology designed to fragment and distribute Small Language Models (SLMs) across existing standard enterprise networking hardware. By applying tensor quantization and modeling the transformer architecture as a bipartite graph mapped over a Local Area Network (LAN) topology, DDA enables distributed generative inference without requiring dedicated AI accelerators. We specifically target the Cisco IOx Application Hosting ecosystem, enforcing strict memory bounds (< 100MB RAM) on edge Access Points (APs) via Docker <code>cgroups</code>, ensuring zero degradation of standard data plane traffic.
             </div>
 
+            <!-- Section 1 -->
+            <h2 class="text-2xl font-bold text-[#111] mt-16 mb-6">1. Introduction</h2>
+            <p>
+                As enterprises rush to adopt Generative AI, they face a dichotomy: utilize public cloud APIs (risking data sovereignty and compliance breaches in sectors like Healthcare and Defense) or deploy private GPU clusters (incurring massive CapEx and cooling costs). divaid.AI proposes a third paradigm: <em>Network-as-a-Compute-Cluster</em>.
+            </p>
+            <p>
+                Modern networking hardware, such as Cisco's Wi-Fi 7 Access Points (APs) and Catalyst Switches, contain multi-core ARM processors and NPUs designed for high-throughput packet processing. However, these appliances enforce strict resource limitations to guarantee network uptime. The fundamental challenge is executing a multi-gigabyte neural network across appliances where individual nodes are restricted to mere megabytes of available memory.
+            </p>
+
+            <!-- Section 2 -->
+            <h2 class="text-2xl font-bold text-[#111] mt-16 mb-6">2. Hardware Constraints & The Cisco IOx Environment</h2>
+            <p>
+                The DDA algorithm is explicitly designed to operate within the Cisco IOx architecture, which provides a Docker-based application hosting environment directly on network elements. To ensure theoretical limits meet real-world feasibility, our physical testbed defines the following strict architectural bounds:
+            </p>
+            
+            <div class="my-8 bg-zinc-50 border border-zinc-200 rounded-lg p-6 font-sans overflow-x-auto">
+                <h4 class="font-bold text-[#111] mb-4">Table 1: Infrastructure Resource Matrix</h4>
+                <table class="w-full text-left text-sm">
+                    <thead>
+                        <tr class="border-b border-zinc-300 text-zinc-500">
+                            <th class="pb-2 font-medium">Node Role</th>
+                            <th class="pb-2 font-medium">Hardware Model</th>
+                            <th class="pb-2 font-medium">Cgroup RAM Limit</th>
+                            <th class="pb-2 font-medium">Compute Role</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-zinc-700 divide-y divide-zinc-200">
+                        <tr>
+                            <td class="py-3 font-medium">Master Orchestrator</td>
+                            <td class="py-3">Catalyst 9300 / 9400 Series</td>
+                            <td class="py-3">Up to 2GB (w/ SSD)</td>
+                            <td class="py-3">DDA Router, State Tracking</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 font-medium">Edge Worker</td>
+                            <td class="py-3">CW9176I / CW9174I (Wi-Fi 7)</td>
+                            <td class="py-3 text-red-600 font-bold">&le; 100MB</td>
+                            <td class="py-3">Tensor Multiplication (Shards)</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 font-medium">Edge Worker (Legacy)</td>
+                            <td class="py-3">Catalyst 9120 Series</td>
+                            <td class="py-3 text-red-600 font-bold">&le; 64MB</td>
+                            <td class="py-3">Tensor Multiplication (Shards)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <p>
+                To fit within a 100MB RAM footprint, standard Large Language Models (LLMs) are mathematically unviable. Therefore, DDA operates strictly on Small Language Models (SLMs) in the sub-1B parameter class, such as <code>Qwen-2.5-0.5B</code>, compressed via aggressive INT4 Activation-Aware Weight Quantization (AWQ).
+            </p>
+
+            <!-- Section 3 -->
+            <h2 class="text-2xl font-bold text-[#111] mt-16 mb-6">3. The DivGraph Distribution Algorithm</h2>
+            <p>
+                Unlike standard pipeline parallelism used in GPU clusters (which relies on terabyte-per-second NVLink interconnects), edge hardware communicates over standard Ethernet (1Gbps/10Gbps) and Wi-Fi fabrics. Latency is the primary bottleneck. DDA mitigates this through a graph-theoretic approach to tensor routing.
+            </p>
+
+            <h3 class="text-xl font-bold text-[#111] mt-8 mb-4">3.1 Mathematical Formulation</h3>
+            <p>
+                Let a transformer-based SLM be represented as a computational directed acyclic graph (DAG), \( G = (V, E) \), where each vertex \( v \in V \) represents a transformer block (or a self-attention mechanism subset), and each edge \( e \in E \) represents the size of the hidden state tensor passed between blocks.
+            </p>
+            <p>
+                Let the physical network infrastructure be a graph \( P = (N, L) \), where \( N \) represents the physical IOx nodes (Orchestrator and APs) and \( L \) represents the physical link latencies and bandwidth constraints between them.
+            </p>
+            <p>
+                The DDA algorithm seeks a partitioning \( P_v \) of \( V \) across \( N \) such that for every subset \( V_i \) assigned to node \( n_i \), the required memory \( M(V_i) \) satisfies:
+            </p>
+            <div class="math-block text-center text-lg">
+                \( M(V_i) \le C_{RAM}(n_i) \)
+            </div>
+            <p>
+                Where \( C_{RAM}(n_i) \) is the strict <code>cgroups</code> memory limit (e.g., 100MB). Concurrently, DDA minimizes the total network latency cost \( C_{net} \) caused by the communication edges \( E \) that cross different physical nodes.
+            </p>
+
+            <h3 class="text-xl font-bold text-[#111] mt-8 mb-4">3.2 State Propagation & The DDA Router</h3>
+            <p>
+                The Catalyst 9300 operates as the DDA Router. When a prompt is submitted, it is tokenized by the switch. The initial embedding tensor is then transmitted to the first worker AP (e.g., AP-01). 
+            </p>
+            <p>
+                Instead of returning the result to the switch after every layer, AP-01 performs inference for its assigned subset of layers and directly forwards the resulting hidden state tensor over the LAN to AP-02, creating a physical "daisy-chain" of inference across the ceiling access points. The Catalyst 9300 only intervenes to orchestrate failovers if an AP drops out due to prioritizing Wi-Fi traffic.
+            </p>
+
+            <!-- Section 4 -->
+            <h2 class="text-2xl font-bold text-[#111] mt-16 mb-6">4. Patentability Strategy & Intellectual Property</h2>
+            <p>
+                A critical phase of this research is securing intellectual property. Software algorithms and mathematical models alone are heavily scrutinized and often rejected by the USPTO under <em>Alice Corp. v. CLS Bank International</em>. 
+            </p>
+            <p>
+                However, DDA is specifically constructed to qualify for a <strong>Utility Patent</strong> by tying the abstract mathematical sharding of tensors directly to a physical improvement of network hardware operations. The patent claim is structured as:
+            </p>
+            <blockquote class="border-l-4 border-blue-500 pl-6 py-2 my-8 italic text-zinc-600 bg-blue-50/50 rounded-r-lg">
+                "A method for dynamically mapping tensor execution states across standard Local Area Network (LAN) switching fabrics to execute generative artificial intelligence inference, characterized in that the mapping is constrained by explicitly defined hardware memory limits on network edge devices, thereby providing computational capabilities without degrading concurrent data plane packet switching."
+            </blockquote>
+
+            <!-- Section 5 -->
+            <h2 class="text-2xl font-bold text-[#111] mt-16 mb-6">5. Conclusion & Next Steps</h2>
+            <p>
+                The DDA methodology proves that latent compute resources within enterprise networking infrastructure can be safely harvested for Generative AI. The next step in this research involves the development of the Python-based Proof of Concept (PoC) to empirically benchmark the latency of <code>int4</code> AWQ layer execution on ARM-based constrained nodes versus the transmission time of the hidden state vectors.
+            </p>
+            
         </div>
     </main>
     
     <!-- Footer -->
-    <footer class="border-t border-zinc-800/50 bg-zinc-950 py-10 relative z-10">
-        <div class="max-w-[1400px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-600">
-            <div class="flex items-center gap-2 font-medium text-zinc-300 mb-4 md:mb-0">
+    <footer class="border-t border-zinc-200 bg-white py-10 relative z-10 font-sans">
+        <div class="max-w-[800px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-500">
+            <div class="flex items-center gap-2 font-medium text-[#111] mb-4 md:mb-0">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="5" height="5" rx="1" fill="currentColor"></rect><rect x="15" y="4" width="5" height="5" rx="1"></rect><rect x="15" y="15" width="5" height="5" rx="1"></rect><rect x="4" y="15" width="5" height="5" rx="1"></rect><path d="M6.5 9v6"></path><path d="M17.5 9v6"></path><path d="M9 6.5h6"></path><path d="M9 17.5h6"></path><path d="M9 9l6 6"></path></svg>
-                divaid.AI
+                divaid.AI Research
             </div>
-            <p>Confidential Research Annex. All rights reserved.</p>
+            <p>Confidential Research Draft. All rights reserved.</p>
         </div>
     </footer>
 </body>
