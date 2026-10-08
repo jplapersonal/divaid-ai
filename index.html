@@ -587,21 +587,26 @@
                         <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         The Hidden Supercomputer: On-Premise vs. Cloud GPU
                     </h3>
-                    <div class="grid md:grid-cols-3 gap-8 md:gap-12 divide-y md:divide-y-0 md:divide-x divide-zinc-100">
-                        <div class="pt-6 md:pt-0">
+                    <div class="grid lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-zinc-100">
+                        <div class="pt-6 lg:pt-0">
                             <div class="text-4xl font-medium tracking-tight text-[#111]">100GB+</div>
                             <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Distributed Tensor RAM</div>
-                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Aggregating just 100MB per AP across a 1,000-node campus yields over 100GB of working memory—surpassing the 80GB VRAM of a dedicated <strong>$15,000 NVIDIA A100 GPU</strong>.</p>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Aggregating just 100MB per AP yields over 100GB of working memory—surpassing the 80GB VRAM of a dedicated <strong>$15,000 NVIDIA A100 GPU</strong>.</p>
                         </div>
-                        <div class="pt-6 md:pt-0 md:pl-12">
+                        <div class="pt-6 lg:pt-0 lg:pl-8">
                             <div class="text-4xl font-medium tracking-tight text-[#111]">4,000+</div>
                             <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Parallel ARM Cores</div>
-                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Instead of renting an expensive AWS <code>p4d.24xlarge</code> instance at $32/hour, DDA awakens the massive, dormant multicore compute power already hanging from your ceilings.</p>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Instead of renting expensive AWS instances, DDA awakens the massive, dormant multicore compute power already hanging from your ceilings.</p>
                         </div>
-                        <div class="pt-6 md:pt-0 md:pl-12">
+                        <div class="pt-6 lg:pt-0 lg:pl-8">
+                            <div class="text-4xl font-medium tracking-tight text-[#111]">0 <span class="text-lg text-zinc-500">kW</span></div>
+                            <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Net-New Power Draw</div>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">APs run 24/7 via low-power PoE. We scavenge stranded background cycles, bypassing the massive multi-kilowatt (kW) footprint of cloud server racks.</p>
+                        </div>
+                        <div class="pt-6 lg:pt-0 lg:pl-8">
                             <div class="text-4xl font-medium tracking-tight text-emerald-600">100%</div>
                             <div class="text-sm font-bold text-zinc-900 mt-2 uppercase tracking-wide">Sovereign & Private</div>
-                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Zero cloud API calls. By processing entirely in-house, your highly sensitive corporate IP never leaves the firewall, completely eliminating third-party data leaks.</p>
+                            <p class="text-sm text-zinc-500 mt-3 leading-relaxed">Zero cloud API calls. By processing entirely in-house, your highly sensitive corporate IP never leaves the firewall, eliminating data leaks.</p>
                         </div>
                     </div>
                 </div>
@@ -1214,33 +1219,43 @@
                                 <div>
                                     <div class="text-zinc-50 font-medium mb-2 flex items-center gap-2">
                                         <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                                        Massive HW Refresh
+                                        Hardware Refresh Accelerator
                                     </div>
                                     <p class="text-zinc-500 text-sm font-light leading-relaxed">
-                                        Legacy infrastructure cannot run IOx Docker containers. divaid.AI creates an unprecedented, immediate business case for clients to upgrade legacy networks to Catalyst 9000 Series and Wi-Fi 7 APs to unlock AI capabilities.
+                                        Transforms Wi-Fi 7 and Catalyst 9300 upgrades from a standard IT networking expense into a strategic AI budget requirement, radically accelerating enterprise hardware refresh cycles.
                                     </p>
                                 </div>
                                 
                                 <div>
                                     <div class="text-zinc-50 font-medium mb-2 flex items-center gap-2">
-                                        <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
-                                        Sovereignty as a Service
+                                        <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                                        Partner MSP & Professional Services
                                     </div>
                                     <p class="text-zinc-500 text-sm font-light leading-relaxed">
-                                        Positions Cisco as the exclusive networking vendor capable of offering zero-trust, on-premise Generative AI without requiring massive capital expenditure in dedicated GPU server farms.
+                                        Creates lucrative opportunities for Cisco Partners (AI readiness audits, mesh deployments). Drives recurring revenue through MSP support and adoption of advanced Catalyst software tiers.
                                     </p>
                                 </div>
 
                                 <div>
                                     <div class="text-zinc-50 font-medium mb-2 flex items-center gap-2">
-                                        <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
-                                        DNA Licensing Upsell
+                                        <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                        24/7 High-Availability Edge AI
                                     </div>
                                     <p class="text-zinc-500 text-sm font-light leading-relaxed">
-                                        The DivGraph Orchestrator tightly integrates with Cisco Spaces and DNA Premier tiers, turning software licensing renewals into mission-critical AI operations for the enterprise.
+                                        Because APs are distributed and powered continuously via standard PoE, the resulting AI compute matrix is inherently fault-tolerant, always-on, and features decentralized High Availability (HA) by design.
                                     </p>
                                 </div>
-                            </div>
+                                
+                                <div>
+                                    <div class="text-zinc-50 font-medium mb-2 flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                                        The Bridge to Cisco AI Pods
+                                    </div>
+                                    <p class="text-zinc-500 text-sm font-light leading-relaxed">
+                                        A strategic "Land & Expand" motion. When the client's GenAI workloads inevitably outgrow the edge limits, divaid.AI serves as the complement to seamlessly upsell dedicated Cisco AI Pods and Nexus AI fabrics.
+                                    </p>
+                                </div>
+                            </div></div>
                         </div>
                         
                         <div class="relative mt-12 lg:mt-0">
