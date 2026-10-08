@@ -931,39 +931,68 @@
                     <p class="text-xl text-zinc-500 font-light leading-relaxed">Public cloud LLMs are commercially unviable for highly regulated industries due to data privacy laws. divaid.AI unlocks Generative AI for sectors where the data can never leave the building.</p>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white border border-zinc-200 rounded-[24px] p-8 hover:shadow-lg transition-shadow">
-                        <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center mb-6">
-                            <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-8m0 0V5a2 2 0 012-2h-2m-6 5h12M5 12a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2H5z"></path></svg>
+                <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+                    <!-- Defense -->
+                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                            <img src="assets/sector-defense.jpg" alt="Government and Defense" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <h3 class="text-xl font-medium text-[#111] mb-3">Government & Defense</h3>
-                        <p class="text-zinc-500 font-light text-sm leading-relaxed">Execution of intelligence models on classified data. The network itself becomes an air-gapped supercomputer, ensuring National Security compliance (ENS/FedRAMP) by default.</p>
+                        <div class="p-8 pt-6 relative bg-white h-full">
+                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                                <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-8m0 0V5a2 2 0 012-2h-2m-6 5h12M5 12a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2H5z"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Government & Defense</h3>
+                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Execution of intelligence models on classified data. The network itself becomes an air-gapped supercomputer, ensuring National Security compliance (ENS/FedRAMP) by default.</p>
+                        </div>
                     </div>
 
-                    <div class="bg-white border border-zinc-200 rounded-[24px] p-8 hover:shadow-lg transition-shadow">
-                        <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center mb-6">
-                            <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                    <!-- Healthcare -->
+                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                            <img src="assets/sector-healthcare.jpg" alt="Healthcare and Hospitals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <h3 class="text-xl font-medium text-[#111] mb-3">Healthcare & Hospitals</h3>
-                        <p class="text-zinc-500 font-light text-sm leading-relaxed">Real-time processing of patient telemetry, automated clinical transcription, and diagnostic RAG systems running locally on the hospital's Catalyst-backed VLAN. 100% HIPAA compliant.</p>
+                        <div class="p-8 pt-6 relative bg-white h-full">
+                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                                <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Healthcare & Hospitals</h3>
+                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Real-time processing of patient telemetry, automated clinical transcription, and diagnostic RAG systems running locally on the hospital's Catalyst-backed VLAN. 100% HIPAA compliant.</p>
+                        </div>
                     </div>
 
-                    <div class="bg-white border border-zinc-200 rounded-[24px] p-8 hover:shadow-lg transition-shadow">
-                        <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center mb-6">
-                            <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    <!-- Finance -->
+                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                            <img src="assets/sector-finance.jpg" alt="Banking and Finance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <h3 class="text-xl font-medium text-[#111] mb-3">Banking & Finance</h3>
-                        <p class="text-zinc-500 font-light text-sm leading-relaxed">Processing highly sensitive Personally Identifiable Information (PII) and internal audits. The branch network infrastructure executes the Generative AI tasks without relying on external corporate APIs.</p>
+                        <div class="p-8 pt-6 relative bg-white h-full">
+                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                                <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Banking & Finance</h3>
+                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Processing highly sensitive Personally Identifiable Information (PII) and internal audits. The branch network infrastructure executes the Generative AI tasks without relying on external corporate APIs.</p>
+                        </div>
                     </div>
 
-                    <div class="bg-white border border-zinc-200 rounded-[24px] p-8 hover:shadow-lg transition-shadow">
-                        <div class="w-10 h-10 rounded-full bg-zinc-100 flex items-center justify-center mb-6">
-                            <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <!-- IoT -->
+                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                            <img src="assets/sector-iot.jpg" alt="Critical Infrastructure and IoT" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <h3 class="text-xl font-medium text-[#111] mb-3">Critical Infrastructure & IoT</h3>
-                        <p class="text-zinc-500 font-light text-sm leading-relaxed">Ultra-low latency decision making for industrial networks. By moving inference to the physical APs covering the manufacturing floor, round-trip cloud latency is eliminated entirely.</p>
+                        <div class="p-8 pt-6 relative bg-white h-full">
+                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                                <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </div>
+                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Critical Infrastructure & IoT</h3>
+                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Ultra-low latency decision making for industrial networks. By moving inference to the physical APs covering the manufacturing floor, round-trip cloud latency is eliminated entirely.</p>
+                        </div>
                     </div>
                 </div>
+            </div></div>
             </div>
 
             <!-- Cisco Strategic Value (CDA Pitch) -->
