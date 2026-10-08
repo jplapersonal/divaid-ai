@@ -46,7 +46,7 @@
         }
         </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white">
+<body class="antialiased min-h-screen flex flex-col selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
     <!-- OTP Auth Wall -->
     <div id="auth-wall" class="fixed inset-0 z-[100] bg-[#FAFAFA] flex flex-col items-center justify-center p-6 transition-opacity duration-500">
@@ -131,10 +131,12 @@
                     </svg>
                     <span class="text-xl font-medium tracking-tight">divaid.AI</span>
                 </div>
-                <div class="hidden md:flex space-x-8 text-sm font-medium text-[#666] items-center">
-                    <a href="#paradigm" class="hover:text-[#111] transition-colors">Paradigm</a>
-                    <a href="#bento" class="hover:text-[#111] transition-colors">IOx Constraints</a>
-                    <a href="#architecture" class="hover:text-[#111] transition-colors">Network Flow</a>
+                <div class="hidden lg:flex space-x-8 text-sm font-medium text-[#666] items-center">
+                    <a href="#bento" class="hover:text-[#111] transition-colors">Constraints</a>
+                    <a href="#hardware-isolation" class="hover:text-[#111] transition-colors">Isolation</a>
+                    <a href="#architecture" class="hover:text-[#111] transition-colors">Simulator</a>
+                    <a href="#verticals" class="hover:text-[#111] transition-colors">Sectors</a>
+                    <a href="#cda" class="hover:text-[#111] transition-colors">Vision</a>
                     <a href="dda.html" class="flex items-center gap-1.5 text-blue-600 hover:text-blue-700 bg-blue-50 px-3 py-1 rounded-full transition-colors border border-blue-100">
                         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                         DDA Research
@@ -348,7 +350,7 @@
                 <div class="lg:col-span-7">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-zinc-200 text-xs font-medium tracking-wide text-zinc-600 mb-8 shadow-sm">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#111] fade-pulse"></span>
-                        Cisco C9300 & IOx Native
+                        Decentralized AI Infrastructure
                     </div>
                     
                     <h1 class="text-6xl md:text-7xl lg:text-[5.5rem] font-medium tracking-[-0.03em] leading-[0.95] text-[#111] mb-6">
@@ -952,7 +954,7 @@
 
             
             <!-- Hardware Isolation Deep Dive -->
-            <div id="hardware-isolation" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
+            <div id="hardware-isolation" class="pt-24 pb-24 scroll-mt-24 relative before:absolute before:inset-0 before:w-[100vw] before:left-1/2 before:-translate-x-1/2 before:bg-slate-50 before:border-b before:border-slate-200 before:-z-10">
                 <div class="grid lg:grid-cols-2 gap-16 items-center">
                     
                     <!-- Left: Explanation -->
@@ -1106,73 +1108,73 @@
             </div>
 
 <!-- CDA Strategic Verticals Section -->
-            <div id="verticals" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32">
+            <div id="verticals" class="pt-32 pb-32 scroll-mt-24 text-white relative before:absolute before:inset-0 before:w-[100vw] before:left-1/2 before:-translate-x-1/2 before:bg-zinc-950 before:-z-10">
                 <div class="mb-12 max-w-3xl">
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-xs font-medium tracking-wide text-zinc-600 mb-6 shadow-sm">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-800/50 border border-zinc-800/50 text-xs font-medium tracking-wide text-zinc-400 mb-6 shadow-sm">
                         Total Addressable Market
                     </div>
-                    <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-[#111] mb-6">Target Sectors for Sovereign AI.</h2>
-                    <p class="text-xl text-zinc-500 font-light leading-relaxed">Public cloud LLMs are commercially unviable for highly regulated industries due to data privacy laws. divaid.AI unlocks Generative AI for sectors where the data can never leave the building.</p>
+                    <h2 class="text-3xl md:text-4xl font-medium tracking-tight text-white mb-6">Target Sectors for Sovereign AI.</h2>
+                    <p class="text-xl text-zinc-400 font-light leading-relaxed">Public cloud LLMs are commercially unviable for highly regulated industries due to data privacy laws. divaid.AI unlocks Generative AI for sectors where the data can never leave the building.</p>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
                     <!-- Defense -->
-                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
-                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-800/50 border-b border-zinc-100">
                             <img src="assets/sector-defense.jpg" alt="Government and Defense" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <div class="p-8 pt-6 relative bg-white h-full">
-                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                        <div class="p-8 pt-6 relative bg-zinc-900/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
                                 <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 21v-8m0 0V5a2 2 0 012-2h-2m-6 5h12M5 12a2 2 0 00-2 2v6a2 2 0 002 2h14a2 2 0 002-2v-6a2 2 0 00-2-2H5z"></path></svg>
                             </div>
-                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Government & Defense</h3>
-                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Execution of intelligence models on classified data. The network itself becomes an air-gapped supercomputer, ensuring National Security compliance (ENS/FedRAMP) by default.</p>
+                            <h3 class="text-xl font-medium text-white mb-3 mt-4">Government & Defense</h3>
+                            <p class="text-zinc-400 font-light text-sm leading-relaxed pb-4">Execution of intelligence models on classified data. The network itself becomes an air-gapped supercomputer, ensuring National Security compliance (ENS/FedRAMP) by default.</p>
                         </div>
                     </div>
 
                     <!-- Healthcare -->
-                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
-                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-800/50 border-b border-zinc-100">
                             <img src="assets/sector-healthcare.jpg" alt="Healthcare and Hospitals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <div class="p-8 pt-6 relative bg-white h-full">
-                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                        <div class="p-8 pt-6 relative bg-zinc-900/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
                                 <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                             </div>
-                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Healthcare & Hospitals</h3>
-                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Real-time processing of patient telemetry, automated clinical transcription, and diagnostic RAG systems running locally on the hospital's Catalyst-backed VLAN. 100% HIPAA compliant.</p>
+                            <h3 class="text-xl font-medium text-white mb-3 mt-4">Healthcare & Hospitals</h3>
+                            <p class="text-zinc-400 font-light text-sm leading-relaxed pb-4">Real-time processing of patient telemetry, automated clinical transcription, and diagnostic RAG systems running locally on the hospital's Catalyst-backed VLAN. 100% HIPAA compliant.</p>
                         </div>
                     </div>
 
                     <!-- Finance -->
-                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
-                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-800/50 border-b border-zinc-100">
                             <img src="assets/sector-finance.jpg" alt="Banking and Finance" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <div class="p-8 pt-6 relative bg-white h-full">
-                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                        <div class="p-8 pt-6 relative bg-zinc-900/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
                                 <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                             </div>
-                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Banking & Finance</h3>
-                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Processing highly sensitive Personally Identifiable Information (PII) and internal audits. The branch network infrastructure executes the Generative AI tasks without relying on external corporate APIs.</p>
+                            <h3 class="text-xl font-medium text-white mb-3 mt-4">Banking & Finance</h3>
+                            <p class="text-zinc-400 font-light text-sm leading-relaxed pb-4">Processing highly sensitive Personally Identifiable Information (PII) and internal audits. The branch network infrastructure executes the Generative AI tasks without relying on external corporate APIs.</p>
                         </div>
                     </div>
 
                     <!-- IoT -->
-                    <div class="bg-white border border-zinc-200 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
-                        <div class="h-48 w-full relative overflow-hidden bg-zinc-100 border-b border-zinc-100">
+                    <div class="bg-zinc-900/50 border border-zinc-800/50 rounded-[24px] overflow-hidden hover:shadow-xl transition-all duration-500 group">
+                        <div class="h-48 w-full relative overflow-hidden bg-zinc-800/50 border-b border-zinc-100">
                             <img src="assets/sector-iot.jpg" alt="Critical Infrastructure and IoT" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                         </div>
-                        <div class="p-8 pt-6 relative bg-white h-full">
-                            <div class="w-12 h-12 rounded-full bg-white border border-zinc-200 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
+                        <div class="p-8 pt-6 relative bg-zinc-900/50 h-full">
+                            <div class="w-12 h-12 rounded-full bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-6 absolute -top-6 left-8 shadow-md">
                                 <svg class="w-5 h-5 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             </div>
-                            <h3 class="text-xl font-medium text-[#111] mb-3 mt-4">Critical Infrastructure & IoT</h3>
-                            <p class="text-zinc-500 font-light text-sm leading-relaxed pb-4">Ultra-low latency decision making for industrial networks. By moving inference to the physical APs covering the manufacturing floor, round-trip cloud latency is eliminated entirely.</p>
+                            <h3 class="text-xl font-medium text-white mb-3 mt-4">Critical Infrastructure & IoT</h3>
+                            <p class="text-zinc-400 font-light text-sm leading-relaxed pb-4">Ultra-low latency decision making for industrial networks. By moving inference to the physical APs covering the manufacturing floor, round-trip cloud latency is eliminated entirely.</p>
                         </div>
                     </div>
                 </div>
@@ -1180,7 +1182,7 @@
 
 
             <!-- Cisco Strategic Value (CDA Pitch) -->
-            <div id="cda" class="mt-32 pt-20 border-t border-zinc-100 scroll-mt-32 pb-12">
+            <div id="cda" class="pt-24 pb-24 scroll-mt-24 relative before:absolute before:inset-0 before:w-[100vw] before:left-1/2 before:-translate-x-1/2 before:bg-zinc-50 before:border-t before:border-zinc-200 before:-z-10">
                 <div class="bg-[#111] rounded-[32px] p-10 md:p-16 relative overflow-hidden group">
                     <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-zinc-800/30 to-transparent pointer-events-none"></div>
                     <div class="absolute -right-20 -top-20 w-64 h-64 border border-zinc-800 rounded-full opacity-50 group-hover:scale-110 transition-transform duration-1000"></div>
